@@ -22,6 +22,7 @@ class Vertex { // vertex => düğüm
     public int plaka;
     public ArrayList<Edge> komsular = new ArrayList<>();
     public double minMesafe = Double.POSITIVE_INFINITY;
+    public Vertex parent;
     public boolean kullanildiMi = false;
 
     public Vertex(String sehirİsmi, int sehirPlaka) {
@@ -67,14 +68,28 @@ public class Dijkstra {
             sehirCursor++;
         }
         komsularDosyasi.close();
-
+        Vertex aktifSehir = sehirler.get(40);
         sehirler.get(40).minMesafe = 0;
         for (int i = 0; i < sehirler.get(40).komsular.size(); i++) {
             sehirler.get(40).komsular.get(i).hedefVertex.minMesafe = sehirler.get(40).komsular.get(i).mesafe;
+            sehirler.get(40).komsular.get(i).hedefVertex.parent=aktifSehir;
         }
-       //  System.out.println(sehirler.get(40).komsular.get(0).hedefVertex.plaka+"   "+sehirler.get(40).komsular.get(0).hedefVertex.minMesafe);
-      
-       
-     
+        //  System.out.println(sehirler.get(40).komsular.get(0).hedefVertex.plaka+"   "+sehirler.get(40).komsular.get(0).hedefVertex.minMesafe);
+        int tmp1 = 26;
+// sıradaki sehri secme fonkk<<<<<<<<<<<<<<<<
+        double tmp = Double.POSITIVE_INFINITY;
+        for (int i = 0; i < sehirler.size(); i++) {
+            if (sehirler.get(i).minMesafe < tmp && sehirler.get(i).kullanildiMi != true && i != (aktifSehir.plaka - 1)) {
+                tmp = sehirler.get(i).minMesafe;
+                tmp1 = i;
+            }
+        }
+        aktifSehir = sehirler.get(tmp1);
+
+        System.out.println(aktifSehir.minMesafe + " " + (tmp1 + 1));
+        //<<<<<<<<<<<<<
+       for(int i=0;i<(sehirler.size()-1);i++){
+        
+       }
     }
 }
