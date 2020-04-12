@@ -1,11 +1,16 @@
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 
 class Edge { // edge => kenar
 
@@ -88,7 +93,8 @@ public class Dijkstra {
 
     }
 
-    public static void guzergahEkle(Vertex sehir, int index) {
+    public static void guzergahEkle(Vertex sehir, int index) { //gidilecek şehirler listesindeki tüm şehirler için bu tekrarlanır. şehir değişkeni sıradaki şehri tutar, index ise o şehrin,
+        //gidilecek şehirler listesindeki indexini tutar. Ör: Kocaeli 0,Bursa 1,Eskişehir 2 ....
         for (int i = 0; i < sehirler.size(); i++) {
             ArrayList<String> cumle = new ArrayList<>();
             Vertex guzergah = sehirler.get(i); // guzergah bir şehirden kocaeliye gidene kadar uğranılan şehirleri tutuyor.
@@ -100,10 +106,18 @@ public class Dijkstra {
                 guzergah = guzergah.parent;
             }
             cumle.add(sehir.dugumIsmi);
-            minSehirler.add(new ArrayList<ArrayList<String>>());
+            minSehirler.add(new ArrayList<ArrayList<String>>());//alt satırda çekebilmek için önce bellekten yer ayırmamız gerekiyor.
             minSehirler.get(index).add(cumle);
         }
 
+    }
+
+    public static int fak(int sayi) {//faktoriyel fonksiyonu
+        int fakt = 1;
+        for (int i = 1; i <= sayi; i++) {
+            fakt *= i;
+        }
+        return fakt;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -138,7 +152,7 @@ public class Dijkstra {
             sehirCursor++;
         }
         komsularDosyasi.close(); // dosyadan çekip graphı tamamladık.
-        
+
         //gidilecek şehirleri ekledik şimdilik,  not: gittiğimiz şehirleri listeden bir bir sileceğiz
         gidilecekSehirler.add(sehirler.get(40));//kocaeli
         gidilecekSehirler.add(sehirler.get(15));//bursa
@@ -146,11 +160,116 @@ public class Dijkstra {
         gidilecekSehirler.add(sehirler.get(5));//ankara
 
         for (int i = 0; i < gidilecekSehirler.size(); i++) {
-            sehirDijkstra(sehirler.get(gidilecekSehirler.get(i).plaka-1)); // Djikstra bulma fonk. çağırıldı. 
+            sehirDijkstra(sehirler.get(gidilecekSehirler.get(i).plaka - 1)); // Djikstra bulma fonk. çağırıldı. 
             guzergahEkle(gidilecekSehirler.get(i), i);
         }
 
-        System.out.println(minSehirler.get(2).get(40).get(0));
+        System.out.println(minSehirler.get(0).get(25).get(0));
+///////////////////////////////////////////////////////////////////////////////////////////// rotaları hesaplama kısmı
+        ArrayList<Integer> a = new ArrayList<>();
+        int sayi = gidilecekSehirler.size() - 1;//kocaeli dahil olmadığı için 1 çıkarttık.
+        String[] s = new String[fak(sayi)];
+        for (int i = 1; i <= sayi; i++) {
+            a.add(i);
+        }
+        for (int i = 0; i < fak(sayi); i++) {//güzergahların sonuna kocaeliyi ekler
+            s[i] = "";
+            s[i] += 0;
+        }
 
+        for (int i = 1; i <= sayi; i++) {
+            for (int j = 0; j < fak(sayi - 1); j++) {
+                s[j + (fak(sayi - 1) * (i - 1))] += i;
+            }
+        }
+        int sayi3 = sayi - 1;
+        int sayi2 = sayi - 2;
+        int m = 999;
+        int n = 0;
+        ArrayList<Integer> iceren = new ArrayList<>();
+        for (int i = 0; i < sayi - 1; i++) {//sütunlar için
+            for (int j = n; j < fak(sayi);) {//satırlar için
+                for (int k = 0; k < fak(sayi2); k++) {
+                    for (int u = 1; u <= sayi; u++) {
+                        if (s[j].contains(String.valueOf(u))) {
+                            iceren.add(u);
+                        }
+                    }
+                    if (m == 999) {
+                        for (int o = 1; o <= sayi; o++) {
+                            if (iceren.contains(o) == false) {
+                                m = o;
+                                iceren.add(o);
+                                break;
+                            }
+                        }
+                    }
+
+                    s[j] += m;
+                    j++;
+                    n++;
+                    if (n % fak(sayi3) == 0) {
+                        iceren.clear();
+                    }
+                }
+                m = 999;
+            }
+            n = 0;
+            sayi2 -= 1;
+            sayi3 -= 1;
+        }
+        for (int i = 0; i < fak(sayi); i++) {//güzergahşların sonuna kocaeliyi ekler.           
+            s[i] += 0;
+        }
+        for (int j = 0; j < fak(sayi); j++) {
+            if (s[j].contains("0")) {
+                System.out.println(s[j]);
+            }
+        }
+        double toplam = 0;
+
+        for (int i = 0; i < fak(sayi); i++) {
+
+            for (int j = 0; j < sayi + 1; j++) {
+                char s1[] = s[i].toCharArray();
+                int s2[] = new int[s1.length];
+                for (int k = 0; k < s1.length; k++) {
+                    s2[k] = s1[k] - 48;
+                }
+
+                toplam += (Double.parseDouble(minSehirler.get(s2[j]).get(gidilecekSehirler.get(s2[j + 1]).plaka - 1).get(0)));
+
+            }
+
+            System.out.println(toplam);
+            toplam = 0;
+        }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rotaları hesaplama kısmı
+        /*
+        
+        JFrame f = new JFrame("Gezgin Kargo Dağıtıcısı");
+        f.getContentPane().setBackground(Color.YELLOW);
+        ArrayList<JCheckBox> checkBoxTutucu=new ArrayList<>();
+        int konumx = 0, konumy = 0;
+
+        for (int i = 0; i < sehirler.size(); i++) {
+            JCheckBox checkBox = new JCheckBox(sehirler.get(i).plaka+" - "+sehirler.get(i).dugumIsmi);
+            checkBoxTutucu.add(checkBox);
+            checkBox.setBounds(konumx, konumy, 150, 50);
+            f.add(checkBox);
+            konumy+=50;
+            
+            if((i+1)%9 == 0){
+                konumx +=220;
+                konumy=0;
+            }
+        }
+
+        f.setSize(1920, 1080);E
+        f.setLayout(null);
+        f.setVisible(true);
+        
+        System.out.println(checkBoxTutucu.get(0).isSelected());
+         */
     }//psvm
 }//djikstra
