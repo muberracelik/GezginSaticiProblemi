@@ -37,11 +37,17 @@ class Vertex { // vertex => düğüm
         plaka = sehirPlaka;
     }
 
+    public Vertex(double minMesafe) {
+        this.minMesafe = minMesafe;
+
+    }
+
 }
 
 public class Dijkstra {
 
-    public static ArrayList<ArrayList<ArrayList<String>>> minSehirler = new ArrayList<>();
+    //public static ArrayList<ArrayList<ArrayList<String>>> minSehirler = new ArrayList<>();
+    public static ArrayList<ArrayList<ArrayList<Vertex>>> minSehirler2 = new ArrayList<>();
     public static ArrayList<Vertex> sehirler = new ArrayList<>();
     public static ArrayList<Vertex> gidilecekSehirler = new ArrayList<>();
 
@@ -96,18 +102,25 @@ public class Dijkstra {
     public static void guzergahEkle(Vertex sehir, int index) { //gidilecek şehirler listesindeki tüm şehirler için bu tekrarlanır. şehir değişkeni sıradaki şehri tutar, index ise o şehrin,
         //gidilecek şehirler listesindeki indexini tutar. Ör: Kocaeli 0,Bursa 1,Eskişehir 2 ....
         for (int i = 0; i < sehirler.size(); i++) {
-            ArrayList<String> cumle = new ArrayList<>();
+            //ArrayList<String> cumle = new ArrayList<>();
+            ArrayList<Vertex> cumle2 = new ArrayList<>();
             Vertex guzergah = sehirler.get(i); // guzergah bir şehirden kocaeliye gidene kadar uğranılan şehirleri tutuyor.
 
-            cumle.add(String.valueOf(guzergah.minMesafe));
+            //cumle.add(String.valueOf(guzergah.minMesafe));
+            cumle2.add(new Vertex(guzergah.minMesafe));
             while (guzergah != sehirler.get(sehir.plaka - 1)) {
-
-                cumle.add(guzergah.dugumIsmi);
+                //System.out.println(guzergah.dugumIsmi);
+                // cumle.add(guzergah.dugumIsmi);
+                cumle2.add(guzergah);
                 guzergah = guzergah.parent;
             }
-            cumle.add(sehir.dugumIsmi);
-            minSehirler.add(new ArrayList<ArrayList<String>>());//alt satırda çekebilmek için önce bellekten yer ayırmamız gerekiyor.
-            minSehirler.get(index).add(cumle);
+            //cumle.add(sehir.dugumIsmi);
+            cumle2.add(sehir);
+            //minSehirler.add(new ArrayList<ArrayList<String>>());
+            minSehirler2.add(new ArrayList<ArrayList<Vertex>>());//alt satırda çekebilmek için önce bellekten yer ayırmamız gerekiyor.
+            // minSehirler.get(index).add(cumle);
+            minSehirler2.get(index).add(cumle2);
+
         }
 
     }
@@ -155,20 +168,28 @@ public class Dijkstra {
 
         //gidilecek şehirleri ekledik şimdilik,  not: gittiğimiz şehirleri listeden bir bir sileceğiz
         gidilecekSehirler.add(sehirler.get(40));//kocaeli
+        gidilecekSehirler.add(sehirler.get(76));//yalova
         gidilecekSehirler.add(sehirler.get(15));//bursa
         gidilecekSehirler.add(sehirler.get(25));//esk
         gidilecekSehirler.add(sehirler.get(5));//ankara
+        gidilecekSehirler.add(sehirler.get(19));// denizli
+        gidilecekSehirler.add(sehirler.get(59)); // tokat
+        gidilecekSehirler.add(sehirler.get(67)); // aksaray        
+        gidilecekSehirler.add(sehirler.get(44)); // manisa
+        gidilecekSehirler.add(sehirler.get(62));
+        gidilecekSehirler.add(sehirler.get(63));
 
         for (int i = 0; i < gidilecekSehirler.size(); i++) {
             sehirDijkstra(sehirler.get(gidilecekSehirler.get(i).plaka - 1)); // Djikstra bulma fonk. çağırıldı. 
             guzergahEkle(gidilecekSehirler.get(i), i);
         }
 
-        System.out.println(minSehirler.get(0).get(25).get(0));
+        //System.out.println(minSehirler.get(0).get(25).get(0));
+        System.out.println(minSehirler2.get(0).get(25).get(1).dugumIsmi);
 ///////////////////////////////////////////////////////////////////////////////////////////// rotaları hesaplama kısmı
         ArrayList<Integer> a = new ArrayList<>();
         int sayi = gidilecekSehirler.size() - 1;//kocaeli dahil olmadığı için 1 çıkarttık.
-        String[] s = new String[fak(sayi)];
+        String[] s = new String[fak(sayi)];//tüm rotalaarı s dizisinde tutuyoruz.
         for (int i = 1; i <= sayi; i++) {
             a.add(i);
         }
@@ -179,7 +200,11 @@ public class Dijkstra {
 
         for (int i = 1; i <= sayi; i++) {
             for (int j = 0; j < fak(sayi - 1); j++) {
-                s[j + (fak(sayi - 1) * (i - 1))] += i;
+                if (i == 10) {
+                    s[j + (fak(sayi - 1) * (i - 1))] += ":";
+                } else {
+                    s[j + (fak(sayi - 1) * (i - 1))] += i;
+                }
             }
         }
         int sayi3 = sayi - 1;
@@ -204,8 +229,11 @@ public class Dijkstra {
                             }
                         }
                     }
-
-                    s[j] += m;
+                    if (m == 10) {
+                        s[j] += ":";
+                    } else {
+                        s[j] += m;
+                    }
                     j++;
                     n++;
                     if (n % fak(sayi3) == 0) {
@@ -220,14 +248,15 @@ public class Dijkstra {
         }
         for (int i = 0; i < fak(sayi); i++) {//güzergahşların sonuna kocaeliyi ekler.           
             s[i] += 0;
-        }
+        }/*
         for (int j = 0; j < fak(sayi); j++) {
             if (s[j].contains("0")) {
                 System.out.println(s[j]);
             }
-        }
+        }*/
+///////////////////////////////////////////////////////////////////////////////////////////// rotaların mesafeleri toplamı bulma
         double toplam = 0;
-
+        ArrayList<Integer> toplamMesafe = new ArrayList<>();
         for (int i = 0; i < fak(sayi); i++) {
 
             for (int j = 0; j < sayi + 1; j++) {
@@ -237,13 +266,105 @@ public class Dijkstra {
                     s2[k] = s1[k] - 48;
                 }
 
-                toplam += (Double.parseDouble(minSehirler.get(s2[j]).get(gidilecekSehirler.get(s2[j + 1]).plaka - 1).get(0)));
+                toplam += minSehirler2.get(s2[j]).get(gidilecekSehirler.get(s2[j + 1]).plaka - 1).get(0).minMesafe;
 
             }
-
-            System.out.println(toplam);
+            toplamMesafe.add((int) toplam);
+            //System.out.println(toplam);
             toplam = 0;
         }
+
+        int enk = Integer.MAX_VALUE;
+        String mubis = "";
+        for (int i = 0; i < (toplamMesafe.size() - 1) / 2; i++) {
+            if (enk > toplamMesafe.get(i)) {
+                enk = toplamMesafe.get(i);
+                mubis = s[i];
+            }
+        }
+        System.out.println(mubis + " " + enk);
+
+        /*for (int i = 0; i < (toplamMesafe.size() - 1)/2; i++) {
+            for (int j = 0; j < (toplamMesafe.size() - 1)/2; j++) {
+                if (toplamMesafe.get(j) > toplamMesafe.get(j + 1)) {
+                    int tmp = toplamMesafe.get(j);
+                    toplamMesafe.set(j, toplamMesafe.get(j + 1));
+                    toplamMesafe.set(j + 1, tmp);
+
+                    String temp = s[j];
+                    s[j] = s[j + 1];
+                    s[j + 1] = temp;
+
+                }
+            }
+
+        } 
+        for (int i = 0; i < toplamMesafe.size(); i++) {
+            System.out.println(toplamMesafe.get(i));
+            System.out.println(s[i]);
+        }
+
+        //System.out.println(minSehirler.get(0).get(25).get(n);
+         */
+        ArrayList<Vertex> rotaIskelet = new ArrayList<>();
+
+        for (int i = 0; i < gidilecekSehirler.size(); i++) {
+            char dizi1[] = s[0].toCharArray();
+
+            for (int j = minSehirler2.get(dizi1[i] - 48).get(gidilecekSehirler.get(dizi1[i + 1] - 48).plaka - 1).size() - 1; j > 1; j--) {
+                rotaIskelet.add(minSehirler2.get(dizi1[i] - 48).get(gidilecekSehirler.get(dizi1[i + 1] - 48).plaka - 1).get(j));
+                System.out.println(minSehirler2.get(dizi1[i] - 48).get(gidilecekSehirler.get(dizi1[i + 1] - 48).plaka - 1).get(j).dugumIsmi);
+
+            }
+        }
+        System.out.println("Kocaeli");
+
+        Vertex aktifSehir;
+        char s3[] = s[0].toCharArray();
+        int s4[] = new int[s3.length];
+        for (int k = 0; k < s3.length; k++) {
+            s4[k] = s3[k] - 48;
+        }
+        int index1 = 0;
+        for (int i = 0; i < rotaIskelet.size() - 2; i++) {
+            System.out.println("i: " + i);
+            aktifSehir = rotaIskelet.get(i);
+            if (gidilecekSehirler.contains(rotaIskelet.get(i + 1))) {
+                if (index1 < 6) {
+
+                    ++index1;
+                }
+                continue;
+            } else {
+                for (int j = 0; j < aktifSehir.komsular.size(); j++) {
+                    for (int k = 0; k < aktifSehir.komsular.get(j).hedefVertex.komsular.size(); k++) {
+
+                        if (aktifSehir.komsular.get(j).hedefVertex.komsular.get(k).hedefVertex.equals(rotaIskelet.get(i + 2))) {
+                            int yeniToplam = (int) ((minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(0).minMesafe) + (minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(0).minMesafe));
+                            //System.out.println((minSehirler2.get(s4[0]).get(gidilecekSehirler.get(s4[1]).plaka - 1).get(0).minMesafe));
+                            int çıkarma = (int) (enk - (minSehirler2.get(s4[index1]).get(gidilecekSehirler.get(s4[index1 + 1]).plaka - 1).get(0).minMesafe));
+                            System.out.println(çıkarma + yeniToplam);
+                            //System.out.println(yeniToplam);
+                            //System.out.println(aktifSehir.komsular.get(j).hedefVertex.dugumIsmi);
+
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+
+        /*
+      
+      
+       Vertex aktifSehir2;
+         while (aktifSehir2 != sehirler.get(sehir.plaka - 1)) {
+                //System.out.println(guzergah.dugumIsmi);
+                cumle.add(guzergah.dugumIsmi);
+                guzergah = guzergah.parent;               
+            }*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rotaları hesaplama kısmı
         /*
         
