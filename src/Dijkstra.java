@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
@@ -133,7 +134,7 @@ public class Dijkstra {
         return fakt;
     }
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
         FileReader komsularDosyasi = new FileReader("komsuluk.txt");
         Scanner scanner = new Scanner(komsularDosyasi);
 
@@ -166,19 +167,21 @@ public class Dijkstra {
         }
         komsularDosyasi.close(); // dosyadan çekip graphı tamamladık.
 
+        
+        
         //gidilecek şehirleri ekledik şimdilik,  not: gittiğimiz şehirleri listeden bir bir sileceğiz
         gidilecekSehirler.add(sehirler.get(40));//kocaeli
         gidilecekSehirler.add(sehirler.get(76));//yalova
         gidilecekSehirler.add(sehirler.get(15));//bursa
         gidilecekSehirler.add(sehirler.get(25));//esk
         gidilecekSehirler.add(sehirler.get(5));//ankara
-        gidilecekSehirler.add(sehirler.get(19));// denizli
-        gidilecekSehirler.add(sehirler.get(59)); // tokat
-        gidilecekSehirler.add(sehirler.get(67)); // aksaray        
+        gidilecekSehirler.add(sehirler.get(19));// denizli        
+        gidilecekSehirler.add(sehirler.get(67)); // aksaray  
+        gidilecekSehirler.add(sehirler.get(59)); // tokat      
         gidilecekSehirler.add(sehirler.get(44)); // manisa
-        gidilecekSehirler.add(sehirler.get(62));
+        gidilecekSehirler.add(sehirler.get(62));//tunceli*/
         gidilecekSehirler.add(sehirler.get(63));
-
+        
         for (int i = 0; i < gidilecekSehirler.size(); i++) {
             sehirDijkstra(sehirler.get(gidilecekSehirler.get(i).plaka - 1)); // Djikstra bulma fonk. çağırıldı. 
             guzergahEkle(gidilecekSehirler.get(i), i);
@@ -273,7 +276,6 @@ public class Dijkstra {
             //System.out.println(toplam);
             toplam = 0;
         }
-
         int enk = Integer.MAX_VALUE;
         String mubis = "";
         for (int i = 0; i < (toplamMesafe.size() - 1) / 2; i++) {
@@ -284,30 +286,8 @@ public class Dijkstra {
         }
         System.out.println(mubis + " " + enk);
 
-        /*for (int i = 0; i < (toplamMesafe.size() - 1)/2; i++) {
-            for (int j = 0; j < (toplamMesafe.size() - 1)/2; j++) {
-                if (toplamMesafe.get(j) > toplamMesafe.get(j + 1)) {
-                    int tmp = toplamMesafe.get(j);
-                    toplamMesafe.set(j, toplamMesafe.get(j + 1));
-                    toplamMesafe.set(j + 1, tmp);
-
-                    String temp = s[j];
-                    s[j] = s[j + 1];
-                    s[j + 1] = temp;
-
-                }
-            }
-
-        } 
-        for (int i = 0; i < toplamMesafe.size(); i++) {
-            System.out.println(toplamMesafe.get(i));
-            System.out.println(s[i]);
-        }
-
-        //System.out.println(minSehirler.get(0).get(25).get(n);
-         */
         ArrayList<Vertex> rotaIskelet = new ArrayList<>();
-
+        rotaIskelet.add(new Vertex(enk));
         for (int i = 0; i < gidilecekSehirler.size(); i++) {
             char dizi1[] = s[0].toCharArray();
 
@@ -320,17 +300,18 @@ public class Dijkstra {
         System.out.println("Kocaeli");
 
         Vertex aktifSehir;
+        ArrayList<ArrayList<Vertex>> alternatifRotalar = new ArrayList<>();
+        alternatifRotalar.add(rotaIskelet);
         char s3[] = s[0].toCharArray();
         int s4[] = new int[s3.length];
         for (int k = 0; k < s3.length; k++) {
             s4[k] = s3[k] - 48;
         }
         int index1 = 0;
-        for (int i = 0; i < rotaIskelet.size() - 2; i++) {
-            System.out.println("i: " + i);
+        for (int i = 1; i < rotaIskelet.size() - 2; i++) {
             aktifSehir = rotaIskelet.get(i);
             if (gidilecekSehirler.contains(rotaIskelet.get(i + 1))) {
-                if (index1 < 6) {
+                if (index1 < gidilecekSehirler.size() - 1) {
 
                     ++index1;
                 }
@@ -340,12 +321,97 @@ public class Dijkstra {
                     for (int k = 0; k < aktifSehir.komsular.get(j).hedefVertex.komsular.size(); k++) {
 
                         if (aktifSehir.komsular.get(j).hedefVertex.komsular.get(k).hedefVertex.equals(rotaIskelet.get(i + 2))) {
+                            ArrayList<Vertex> rota = new ArrayList<>();
                             int yeniToplam = (int) ((minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(0).minMesafe) + (minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(0).minMesafe));
                             //System.out.println((minSehirler2.get(s4[0]).get(gidilecekSehirler.get(s4[1]).plaka - 1).get(0).minMesafe));
                             int çıkarma = (int) (enk - (minSehirler2.get(s4[index1]).get(gidilecekSehirler.get(s4[index1 + 1]).plaka - 1).get(0).minMesafe));
-                            System.out.println(çıkarma + yeniToplam);
+                            int alternatifMesafe = (çıkarma + yeniToplam);
+                            int varmi = 0;
+                            for (int b = 0; b < alternatifRotalar.size(); b++) {
+                                if (alternatifRotalar.get(b).get(0).minMesafe == alternatifMesafe) {
+                                    varmi = 1;
+                                }
+                            }
+                            if (varmi == 1) {
+                                continue;
+                            }
+
+                            rota.add(new Vertex(alternatifMesafe));
+                            System.out.println(alternatifMesafe);
+
                             //System.out.println(yeniToplam);
                             //System.out.println(aktifSehir.komsular.get(j).hedefVertex.dugumIsmi);
+                           // System.out.println("\n\n");
+                            if (s4[index1] == 0) {
+                                for (int v = minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v > 1; v--) {
+                                    rota.add(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                    //System.out.println(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+
+                                for (int v = 1; v < minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v++) {
+                                    rota.add(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                    //System.out.println(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+                                for (int v = 0; v < gidilecekSehirler.size() - 1; v++) {
+                                    for (int w = minSehirler2.get(s4[v + 1]).get(gidilecekSehirler.get(s4[v + 2]).plaka - 1).size() - 1; w > 1; w--) {
+                                        rota.add(minSehirler2.get(s4[v + 1]).get(gidilecekSehirler.get(s4[v + 2]).plaka - 1).get(w));
+                                        //System.out.println(minSehirler2.get(s4[v + 1]).get(gidilecekSehirler.get(s4[v + 2]).plaka - 1).get(w).dugumIsmi);
+
+                                    }
+                                }
+                                rota.add(sehirler.get(40));//kocaeliyi de eklememiz gerekiyor
+                               // System.out.println("Kocaeli\n\n");
+                            } else if (s4[index1 + 1] == 0) {
+                                for (int v = 0; v < gidilecekSehirler.size() - 1; v++) {
+                                    for (int w = minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).size() - 1; w > 1; w--) {
+                                        rota.add(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w));
+                                        //System.out.println(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w).dugumIsmi);
+
+                                    }
+                                }
+                                for (int v = minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v > 1; v--) {
+                                    rota.add(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                    //System.out.println(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+
+                                for (int v = 1; v < minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v++) {
+                                    rota.add(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                    //System.out.println(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+
+                                rota.add(sehirler.get(40));//kocaeliyi de eklememiz gerekiyor
+                                //System.out.println("Kocaeli\n\n");
+
+                            } else {
+                                for (int v = 0; v < index1; v++) {
+                                    for (int w = minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).size() - 1; w > 1; w--) {
+                                        rota.add(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w));
+                                        //System.out.println(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w).dugumIsmi);
+
+                                    }
+                                }
+                                for (int v = minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v > 1; v--) {
+                                    rota.add(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                    //System.out.println(minSehirler2.get(s4[index1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+
+                                for (int v = 1; v < minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).size() - 1; v++) {
+                                    rota.add(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v));
+                                   // System.out.println(minSehirler2.get(s4[index1 + 1]).get(aktifSehir.komsular.get(j).hedefVertex.plaka - 1).get(v).dugumIsmi);
+                                }
+                                for (int v = index1 + 1; v < gidilecekSehirler.size() - 1; v++) {
+                                    for (int w = minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).size() - 1; w > 1; w--) {
+                                        rota.add(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w));
+                                       // System.out.println(minSehirler2.get(s4[v]).get(gidilecekSehirler.get(s4[v + 1]).plaka - 1).get(w).dugumIsmi);
+
+                                    }
+                                }
+                                rota.add(sehirler.get(40));//kocaeliyi de eklememiz gerekiyor
+                               // System.out.println("Kocaeli\n\n");
+                                //System.out.println("müberra ben snei çok seviyorum." + alternatifMesafe);
+                            }
+                           // System.out.println(aktifSehir.komsular.get(j).hedefVertex.dugumIsmi);
+                            alternatifRotalar.add(rota);
 
                         }
 
@@ -355,42 +421,31 @@ public class Dijkstra {
             }
 
         }
+        alternatifRotalar.get(0).add(sehirler.get(40));
+       
+        for (int i = 1; i < alternatifRotalar.size(); i++) {
 
-        /*
-      
-      
-       Vertex aktifSehir2;
-         while (aktifSehir2 != sehirler.get(sehir.plaka - 1)) {
-                //System.out.println(guzergah.dugumIsmi);
-                cumle.add(guzergah.dugumIsmi);
-                guzergah = guzergah.parent;               
-            }*/
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rotaları hesaplama kısmı
-        /*
-        
-        JFrame f = new JFrame("Gezgin Kargo Dağıtıcısı");
-        f.getContentPane().setBackground(Color.YELLOW);
-        ArrayList<JCheckBox> checkBoxTutucu=new ArrayList<>();
-        int konumx = 0, konumy = 0;
-
-        for (int i = 0; i < sehirler.size(); i++) {
-            JCheckBox checkBox = new JCheckBox(sehirler.get(i).plaka+" - "+sehirler.get(i).dugumIsmi);
-            checkBoxTutucu.add(checkBox);
-            checkBox.setBounds(konumx, konumy, 150, 50);
-            f.add(checkBox);
-            konumy+=50;
-            
-            if((i+1)%9 == 0){
-                konumx +=220;
-                konumy=0;
+            for (int j = i; j < alternatifRotalar.size(); j++) {
+                if (alternatifRotalar.get(i).get(0).minMesafe > alternatifRotalar.get(j).get(0).minMesafe) {
+                    ArrayList<Vertex> tmp = (ArrayList<Vertex>) alternatifRotalar.get(i).clone();
+                    alternatifRotalar.set(i, alternatifRotalar.get(j));
+                    alternatifRotalar.set(j, tmp);
+                }
             }
         }
-
-        f.setSize(1920, 1080);E
-        f.setLayout(null);
-        f.setVisible(true);
+        //System.out.println(alternatifRotalar.get(0).get(0).minMesafe);
+        for (int i = 0; i < alternatifRotalar.size(); i++) {
+            System.out.println(alternatifRotalar.get(i).get(0).minMesafe+" batuyu çok seviyorum");
+        }
+        System.exit(0);
         
-        System.out.println(checkBoxTutucu.get(0).isSelected());
-         */
+      
+      
+    
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rotaları hesaplama kısmı
+        
+        
+      
+         
     }//psvm
 }//djikstra

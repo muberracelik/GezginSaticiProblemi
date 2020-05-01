@@ -1,10 +1,3 @@
-
-
-import java.awt.Color;
-import java.util.ArrayList;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,31 +26,634 @@ public class Arayüz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox = new javax.swing.JCheckBox();
+        jPanel1 = new javax.swing.JPanel();
+        baslik = new javax.swing.JLabel();
+        mesaj = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
+        jCheckBox32 = new javax.swing.JCheckBox();
+        jCheckBox33 = new javax.swing.JCheckBox();
+        jCheckBox34 = new javax.swing.JCheckBox();
+        jCheckBox35 = new javax.swing.JCheckBox();
+        jCheckBox36 = new javax.swing.JCheckBox();
+        jCheckBox37 = new javax.swing.JCheckBox();
+        jCheckBox38 = new javax.swing.JCheckBox();
+        jCheckBox39 = new javax.swing.JCheckBox();
+        jCheckBox40 = new javax.swing.JCheckBox();
+        jCheckBox41 = new javax.swing.JCheckBox();
+        jCheckBox42 = new javax.swing.JCheckBox();
+        jCheckBox43 = new javax.swing.JCheckBox();
+        jCheckBox44 = new javax.swing.JCheckBox();
+        jCheckBox45 = new javax.swing.JCheckBox();
+        jCheckBox46 = new javax.swing.JCheckBox();
+        jCheckBox47 = new javax.swing.JCheckBox();
+        jCheckBox48 = new javax.swing.JCheckBox();
+        jCheckBox49 = new javax.swing.JCheckBox();
+        jCheckBox50 = new javax.swing.JCheckBox();
+        jCheckBox51 = new javax.swing.JCheckBox();
+        jCheckBox52 = new javax.swing.JCheckBox();
+        jCheckBox53 = new javax.swing.JCheckBox();
+        jCheckBox54 = new javax.swing.JCheckBox();
+        jCheckBox55 = new javax.swing.JCheckBox();
+        jCheckBox56 = new javax.swing.JCheckBox();
+        jCheckBox57 = new javax.swing.JCheckBox();
+        jCheckBox58 = new javax.swing.JCheckBox();
+        jCheckBox59 = new javax.swing.JCheckBox();
+        jCheckBox60 = new javax.swing.JCheckBox();
+        jCheckBox61 = new javax.swing.JCheckBox();
+        jCheckBox62 = new javax.swing.JCheckBox();
+        jCheckBox63 = new javax.swing.JCheckBox();
+        jCheckBox64 = new javax.swing.JCheckBox();
+        jCheckBox65 = new javax.swing.JCheckBox();
+        jCheckBox66 = new javax.swing.JCheckBox();
+        jCheckBox67 = new javax.swing.JCheckBox();
+        jCheckBox68 = new javax.swing.JCheckBox();
+        jCheckBox69 = new javax.swing.JCheckBox();
+        jCheckBox70 = new javax.swing.JCheckBox();
+        jCheckBox71 = new javax.swing.JCheckBox();
+        jCheckBox72 = new javax.swing.JCheckBox();
+        jCheckBox73 = new javax.swing.JCheckBox();
+        jCheckBox74 = new javax.swing.JCheckBox();
+        jCheckBox75 = new javax.swing.JCheckBox();
+        jCheckBox76 = new javax.swing.JCheckBox();
+        jCheckBox77 = new javax.swing.JCheckBox();
+        jCheckBox78 = new javax.swing.JCheckBox();
+        jCheckBox79 = new javax.swing.JCheckBox();
+        jCheckBox80 = new javax.swing.JCheckBox();
+        jCheckBox81 = new javax.swing.JCheckBox();
+        arkaplanSag = new javax.swing.JLabel();
+        arkaplanSol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1530, 570));
 
-        jCheckBox.setText("jCheckBox");
+        jPanel1.setLayout(null);
+
+        baslik.setFont(new java.awt.Font("Ink Free", 1, 43)); // NOI18N
+        baslik.setForeground(new java.awt.Color(255, 255, 255));
+        baslik.setText("M&T KARGO");
+        jPanel1.add(baslik);
+        baslik.setBounds(620, 20, 270, 60);
+        baslik.getAccessibleContext().setAccessibleName("M&T Kargo Dağıtım Planlama");
+
+        mesaj.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        mesaj.setText("Lütfen teslimat şehirlerini seçiniz !");
+        jPanel1.add(mesaj);
+        mesaj.setBounds(20, 80, 230, 30);
+
+        jCheckBox1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox1.setText("01 - ADANA");
+        jPanel1.add(jCheckBox1);
+        jCheckBox1.setBounds(20, 140, 160, 25);
+
+        jCheckBox2.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox2.setText("02 - ADIYAMAN");
+        jPanel1.add(jCheckBox2);
+        jCheckBox2.setBounds(20, 170, 160, 25);
+
+        jCheckBox3.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox3.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox3.setText("03 - AFYONKARAHİSAR");
+        jPanel1.add(jCheckBox3);
+        jCheckBox3.setBounds(20, 200, 171, 25);
+
+        jCheckBox4.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox4.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox4.setText("04 - AĞRI");
+        jPanel1.add(jCheckBox4);
+        jCheckBox4.setBounds(20, 240, 160, 25);
+
+        jCheckBox5.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox5.setText("05 - AMASYA");
+        jPanel1.add(jCheckBox5);
+        jCheckBox5.setBounds(20, 270, 160, 25);
+
+        jCheckBox6.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox6.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox6.setText("06 - ANKARA");
+        jPanel1.add(jCheckBox6);
+        jCheckBox6.setBounds(20, 300, 160, 25);
+
+        jCheckBox7.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox7.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox7.setText("07 - ANTALYA");
+        jPanel1.add(jCheckBox7);
+        jCheckBox7.setBounds(20, 340, 160, 25);
+
+        jCheckBox8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox8.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox8.setText("08 - ARTVİN");
+        jPanel1.add(jCheckBox8);
+        jCheckBox8.setBounds(20, 370, 160, 25);
+
+        jCheckBox9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox9.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox9.setText("09 - AYDIN");
+        jPanel1.add(jCheckBox9);
+        jCheckBox9.setBounds(20, 400, 160, 25);
+
+        jCheckBox10.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox10.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox10.setText("10 - BALIKESİR");
+        jPanel1.add(jCheckBox10);
+        jCheckBox10.setBounds(210, 140, 130, 25);
+
+        jCheckBox11.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox11.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox11.setText("11 - BİLECİK");
+        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox11);
+        jCheckBox11.setBounds(210, 170, 130, 25);
+
+        jCheckBox12.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox12.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox12.setText("12 - BİNGÖL");
+        jPanel1.add(jCheckBox12);
+        jCheckBox12.setBounds(210, 200, 130, 25);
+
+        jCheckBox13.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox13.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox13.setText("13 - BİTLİS");
+        jPanel1.add(jCheckBox13);
+        jCheckBox13.setBounds(210, 240, 130, 25);
+
+        jCheckBox14.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox14.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox14.setText("14 - BOLU");
+        jPanel1.add(jCheckBox14);
+        jCheckBox14.setBounds(210, 270, 130, 25);
+
+        jCheckBox15.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox15.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox15.setText("15 - BURDUR");
+        jPanel1.add(jCheckBox15);
+        jCheckBox15.setBounds(210, 300, 130, 25);
+
+        jCheckBox16.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox16.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox16.setText("16 - BURSA");
+        jPanel1.add(jCheckBox16);
+        jCheckBox16.setBounds(210, 340, 130, 25);
+
+        jCheckBox17.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox17.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox17.setText("17 - ÇANAKKALE");
+        jPanel1.add(jCheckBox17);
+        jCheckBox17.setBounds(210, 370, 130, 25);
+
+        jCheckBox18.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox18.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox18.setText("18 - ÇANKIRI");
+        jPanel1.add(jCheckBox18);
+        jCheckBox18.setBounds(210, 400, 130, 25);
+
+        jCheckBox19.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox19.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox19.setText("19 - ÇORUM");
+        jPanel1.add(jCheckBox19);
+        jCheckBox19.setBounds(370, 140, 130, 25);
+
+        jCheckBox20.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox20.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox20.setText("20 - DENİZLİ");
+        jPanel1.add(jCheckBox20);
+        jCheckBox20.setBounds(370, 170, 130, 25);
+
+        jCheckBox21.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox21.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox21.setText("21 - DİYARBAKIR");
+        jPanel1.add(jCheckBox21);
+        jCheckBox21.setBounds(370, 200, 130, 25);
+
+        jCheckBox22.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox22.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox22.setText("22 - EDİRNE");
+        jPanel1.add(jCheckBox22);
+        jCheckBox22.setBounds(370, 240, 130, 25);
+
+        jCheckBox23.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox23.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox23.setText("23 - ELAZIĞ");
+        jPanel1.add(jCheckBox23);
+        jCheckBox23.setBounds(370, 270, 130, 25);
+
+        jCheckBox24.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox24.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox24.setText("24 - ERZİNCAN");
+        jPanel1.add(jCheckBox24);
+        jCheckBox24.setBounds(370, 300, 130, 25);
+
+        jCheckBox25.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox25.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox25.setText("25 - ERZURUM");
+        jPanel1.add(jCheckBox25);
+        jCheckBox25.setBounds(370, 340, 130, 25);
+
+        jCheckBox26.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox26.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox26.setText("26 - ESKİŞEHİR");
+        jPanel1.add(jCheckBox26);
+        jCheckBox26.setBounds(370, 370, 130, 25);
+
+        jCheckBox27.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox27.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox27.setText("27 - GAZİANTEP");
+        jPanel1.add(jCheckBox27);
+        jCheckBox27.setBounds(370, 400, 130, 25);
+
+        jCheckBox28.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox28.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox28.setText("28 - GİRESUN");
+        jPanel1.add(jCheckBox28);
+        jCheckBox28.setBounds(530, 140, 130, 25);
+
+        jCheckBox29.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox29.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox29.setText("29 - GÜMÜŞHANE");
+        jPanel1.add(jCheckBox29);
+        jCheckBox29.setBounds(530, 170, 130, 25);
+
+        jCheckBox30.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox30.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox30.setText("30 - HAKKARİ");
+        jPanel1.add(jCheckBox30);
+        jCheckBox30.setBounds(530, 200, 130, 25);
+
+        jCheckBox31.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox31.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox31.setText("31 - HATAY");
+        jPanel1.add(jCheckBox31);
+        jCheckBox31.setBounds(530, 240, 130, 25);
+
+        jCheckBox32.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox32.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox32.setText("32 - ISPARTA");
+        jPanel1.add(jCheckBox32);
+        jCheckBox32.setBounds(530, 270, 130, 25);
+
+        jCheckBox33.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox33.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox33.setText("33 - MERSİN");
+        jPanel1.add(jCheckBox33);
+        jCheckBox33.setBounds(530, 300, 130, 25);
+
+        jCheckBox34.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox34.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox34.setText("34 - İSTANBUL");
+        jPanel1.add(jCheckBox34);
+        jCheckBox34.setBounds(530, 340, 130, 25);
+
+        jCheckBox35.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox35.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox35.setText("35 - İZMİR");
+        jPanel1.add(jCheckBox35);
+        jCheckBox35.setBounds(530, 370, 130, 25);
+
+        jCheckBox36.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox36.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox36.setText("36 - KARS");
+        jPanel1.add(jCheckBox36);
+        jCheckBox36.setBounds(530, 400, 130, 25);
+
+        jCheckBox37.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox37.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox37.setText("37 - KASTAMONU");
+        jPanel1.add(jCheckBox37);
+        jCheckBox37.setBounds(690, 140, 140, 25);
+
+        jCheckBox38.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox38.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox38.setText("38 - KAYSERİ");
+        jPanel1.add(jCheckBox38);
+        jCheckBox38.setBounds(690, 170, 140, 25);
+
+        jCheckBox39.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox39.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox39.setText("39 - KIRKLARELİ");
+        jPanel1.add(jCheckBox39);
+        jCheckBox39.setBounds(690, 200, 140, 25);
+
+        jCheckBox40.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox40.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox40.setText("40 - KIRŞEHİR");
+        jPanel1.add(jCheckBox40);
+        jCheckBox40.setBounds(690, 240, 140, 25);
+
+        jCheckBox41.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox41.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox41.setText("41 - KOCAELİ");
+        jPanel1.add(jCheckBox41);
+        jCheckBox41.setBounds(690, 270, 140, 25);
+
+        jCheckBox42.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox42.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox42.setText("42 - KONYA");
+        jPanel1.add(jCheckBox42);
+        jCheckBox42.setBounds(690, 300, 140, 25);
+
+        jCheckBox43.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox43.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox43.setText("43 - KÜTAHYA");
+        jPanel1.add(jCheckBox43);
+        jCheckBox43.setBounds(690, 340, 140, 25);
+
+        jCheckBox44.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox44.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox44.setText("44 - MALATYA");
+        jPanel1.add(jCheckBox44);
+        jCheckBox44.setBounds(690, 370, 140, 25);
+
+        jCheckBox45.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox45.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox45.setText("45 - MANİSA");
+        jPanel1.add(jCheckBox45);
+        jCheckBox45.setBounds(690, 400, 140, 25);
+
+        jCheckBox46.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox46.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox46.setText("46 - KAHRAMANMARAŞ");
+        jPanel1.add(jCheckBox46);
+        jCheckBox46.setBounds(860, 140, 170, 25);
+
+        jCheckBox47.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox47.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox47.setText("47 - MARDİN");
+        jPanel1.add(jCheckBox47);
+        jCheckBox47.setBounds(860, 170, 170, 25);
+
+        jCheckBox48.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox48.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox48.setText("48 - MUĞLA");
+        jPanel1.add(jCheckBox48);
+        jCheckBox48.setBounds(860, 200, 170, 25);
+
+        jCheckBox49.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox49.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox49.setText("49 - MUŞ");
+        jPanel1.add(jCheckBox49);
+        jCheckBox49.setBounds(860, 240, 170, 25);
+
+        jCheckBox50.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox50.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox50.setText("50 - NEVŞEHİR");
+        jPanel1.add(jCheckBox50);
+        jCheckBox50.setBounds(860, 270, 170, 25);
+
+        jCheckBox51.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox51.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox51.setText("51 - NİĞDE");
+        jPanel1.add(jCheckBox51);
+        jCheckBox51.setBounds(860, 300, 170, 25);
+
+        jCheckBox52.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox52.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox52.setText("52 - ORDU");
+        jPanel1.add(jCheckBox52);
+        jCheckBox52.setBounds(860, 340, 170, 25);
+
+        jCheckBox53.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox53.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox53.setText("53 - RİZE");
+        jPanel1.add(jCheckBox53);
+        jCheckBox53.setBounds(860, 370, 170, 25);
+
+        jCheckBox54.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox54.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox54.setText("54 - SAKARYA");
+        jPanel1.add(jCheckBox54);
+        jCheckBox54.setBounds(860, 400, 170, 25);
+
+        jCheckBox55.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox55.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox55.setText("55 - SAMSUN");
+        jPanel1.add(jCheckBox55);
+        jCheckBox55.setBounds(1060, 140, 120, 25);
+
+        jCheckBox56.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox56.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox56.setText("56 - SİİRT");
+        jPanel1.add(jCheckBox56);
+        jCheckBox56.setBounds(1060, 170, 120, 25);
+
+        jCheckBox57.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox57.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox57.setText("57 - SİNOP");
+        jPanel1.add(jCheckBox57);
+        jCheckBox57.setBounds(1060, 200, 120, 25);
+
+        jCheckBox58.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox58.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox58.setText("58 - SİVAS");
+        jPanel1.add(jCheckBox58);
+        jCheckBox58.setBounds(1060, 240, 120, 25);
+
+        jCheckBox59.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox59.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox59.setText("59 - TEKİRDAĞ");
+        jPanel1.add(jCheckBox59);
+        jCheckBox59.setBounds(1060, 270, 120, 25);
+
+        jCheckBox60.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox60.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox60.setText("60 - TOKAT");
+        jPanel1.add(jCheckBox60);
+        jCheckBox60.setBounds(1060, 300, 120, 25);
+
+        jCheckBox61.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox61.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox61.setText("61 - TRABZON");
+        jPanel1.add(jCheckBox61);
+        jCheckBox61.setBounds(1060, 340, 120, 25);
+
+        jCheckBox62.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox62.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox62.setText("62 - TUNCELİ");
+        jPanel1.add(jCheckBox62);
+        jCheckBox62.setBounds(1060, 370, 120, 25);
+
+        jCheckBox63.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox63.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox63.setText("63 - ŞANLIURFA");
+        jPanel1.add(jCheckBox63);
+        jCheckBox63.setBounds(1060, 400, 127, 25);
+
+        jCheckBox64.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox64.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox64.setText("64 - UŞAK");
+        jPanel1.add(jCheckBox64);
+        jCheckBox64.setBounds(1210, 140, 130, 25);
+
+        jCheckBox65.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox65.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox65.setText("65 - VAN");
+        jPanel1.add(jCheckBox65);
+        jCheckBox65.setBounds(1210, 170, 130, 25);
+
+        jCheckBox66.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox66.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox66.setText("66 - YOZGAT");
+        jPanel1.add(jCheckBox66);
+        jCheckBox66.setBounds(1210, 200, 130, 25);
+
+        jCheckBox67.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox67.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox67.setText("67 - ZONGULDAK");
+        jPanel1.add(jCheckBox67);
+        jCheckBox67.setBounds(1210, 240, 130, 25);
+
+        jCheckBox68.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox68.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox68.setText("68 - AKSARAY");
+        jPanel1.add(jCheckBox68);
+        jCheckBox68.setBounds(1210, 270, 130, 25);
+
+        jCheckBox69.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox69.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox69.setText("69 - BAYBURT");
+        jPanel1.add(jCheckBox69);
+        jCheckBox69.setBounds(1210, 300, 130, 25);
+
+        jCheckBox70.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox70.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox70.setText("70 - KARAMAN");
+        jPanel1.add(jCheckBox70);
+        jCheckBox70.setBounds(1210, 340, 130, 25);
+
+        jCheckBox71.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox71.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox71.setText("71 - KIRIKKALE");
+        jPanel1.add(jCheckBox71);
+        jCheckBox71.setBounds(1210, 370, 130, 25);
+
+        jCheckBox72.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox72.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox72.setText("72 - BATMAN");
+        jPanel1.add(jCheckBox72);
+        jCheckBox72.setBounds(1210, 400, 130, 25);
+
+        jCheckBox73.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox73.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox73.setText("73 - ŞIRNAK");
+        jPanel1.add(jCheckBox73);
+        jCheckBox73.setBounds(1370, 140, 120, 25);
+
+        jCheckBox74.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox74.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox74.setText("74 - BARTIN");
+        jPanel1.add(jCheckBox74);
+        jCheckBox74.setBounds(1370, 170, 120, 25);
+
+        jCheckBox75.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox75.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox75.setText("75 - ARDAHAN");
+        jPanel1.add(jCheckBox75);
+        jCheckBox75.setBounds(1370, 200, 120, 25);
+
+        jCheckBox76.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox76.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox76.setText("76 - IĞDIR");
+        jPanel1.add(jCheckBox76);
+        jCheckBox76.setBounds(1370, 240, 120, 25);
+
+        jCheckBox77.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox77.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox77.setText("77 - YALOVA");
+        jPanel1.add(jCheckBox77);
+        jCheckBox77.setBounds(1370, 270, 120, 25);
+
+        jCheckBox78.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox78.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox78.setText("78 - KARABÜK");
+        jPanel1.add(jCheckBox78);
+        jCheckBox78.setBounds(1370, 300, 120, 25);
+
+        jCheckBox79.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox79.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox79.setText("79 - KİLİS");
+        jPanel1.add(jCheckBox79);
+        jCheckBox79.setBounds(1370, 340, 120, 25);
+
+        jCheckBox80.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox80.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox80.setText("80 - OSMANİYE");
+        jPanel1.add(jCheckBox80);
+        jCheckBox80.setBounds(1370, 370, 120, 25);
+
+        jCheckBox81.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jCheckBox81.setForeground(new java.awt.Color(102, 71, 10));
+        jCheckBox81.setText("81 - DÜZCE");
+        jPanel1.add(jCheckBox81);
+        jCheckBox81.setBounds(1370, 400, 120, 25);
+
+        arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
+        arkaplanSag.setText("jLabel3");
+        jPanel1.add(arkaplanSag);
+        arkaplanSag.setBounds(760, 0, 750, 560);
+        arkaplanSag.getAccessibleContext().setAccessibleName("");
+
+        arkaplanSol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        arkaplanSol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
+        arkaplanSol.setToolTipText("");
+        arkaplanSol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        arkaplanSol.setMaximumSize(new java.awt.Dimension(1280, 1396));
+        jPanel1.add(arkaplanSol);
+        arkaplanSol.setBounds(-120, 0, 1000, 560);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jCheckBox)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1513, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
-                .addComponent(jCheckBox)
-                .addGap(123, 123, 123))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,15 +686,96 @@ public class Arayüz extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Arayüz().setVisible(true);
-                
             }
         });
-        
-       
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox;
+    private javax.swing.JLabel arkaplanSag;
+    private javax.swing.JLabel arkaplanSol;
+    private javax.swing.JLabel baslik;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox30;
+    private javax.swing.JCheckBox jCheckBox31;
+    private javax.swing.JCheckBox jCheckBox32;
+    private javax.swing.JCheckBox jCheckBox33;
+    private javax.swing.JCheckBox jCheckBox34;
+    private javax.swing.JCheckBox jCheckBox35;
+    private javax.swing.JCheckBox jCheckBox36;
+    private javax.swing.JCheckBox jCheckBox37;
+    private javax.swing.JCheckBox jCheckBox38;
+    private javax.swing.JCheckBox jCheckBox39;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox40;
+    private javax.swing.JCheckBox jCheckBox41;
+    private javax.swing.JCheckBox jCheckBox42;
+    private javax.swing.JCheckBox jCheckBox43;
+    private javax.swing.JCheckBox jCheckBox44;
+    private javax.swing.JCheckBox jCheckBox45;
+    private javax.swing.JCheckBox jCheckBox46;
+    private javax.swing.JCheckBox jCheckBox47;
+    private javax.swing.JCheckBox jCheckBox48;
+    private javax.swing.JCheckBox jCheckBox49;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox50;
+    private javax.swing.JCheckBox jCheckBox51;
+    private javax.swing.JCheckBox jCheckBox52;
+    private javax.swing.JCheckBox jCheckBox53;
+    private javax.swing.JCheckBox jCheckBox54;
+    private javax.swing.JCheckBox jCheckBox55;
+    private javax.swing.JCheckBox jCheckBox56;
+    private javax.swing.JCheckBox jCheckBox57;
+    private javax.swing.JCheckBox jCheckBox58;
+    private javax.swing.JCheckBox jCheckBox59;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox60;
+    private javax.swing.JCheckBox jCheckBox61;
+    private javax.swing.JCheckBox jCheckBox62;
+    private javax.swing.JCheckBox jCheckBox63;
+    private javax.swing.JCheckBox jCheckBox64;
+    private javax.swing.JCheckBox jCheckBox65;
+    private javax.swing.JCheckBox jCheckBox66;
+    private javax.swing.JCheckBox jCheckBox67;
+    private javax.swing.JCheckBox jCheckBox68;
+    private javax.swing.JCheckBox jCheckBox69;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox70;
+    private javax.swing.JCheckBox jCheckBox71;
+    private javax.swing.JCheckBox jCheckBox72;
+    private javax.swing.JCheckBox jCheckBox73;
+    private javax.swing.JCheckBox jCheckBox74;
+    private javax.swing.JCheckBox jCheckBox75;
+    private javax.swing.JCheckBox jCheckBox76;
+    private javax.swing.JCheckBox jCheckBox77;
+    private javax.swing.JCheckBox jCheckBox78;
+    private javax.swing.JCheckBox jCheckBox79;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox80;
+    private javax.swing.JCheckBox jCheckBox81;
+    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel mesaj;
     // End of variables declaration//GEN-END:variables
 }
