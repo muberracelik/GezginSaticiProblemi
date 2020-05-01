@@ -1,20 +1,28 @@
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Lenovo
  */
 public class Arayüz extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Arayüz
-     */
-    public Arayüz() {
+    Dijkstra d = new Dijkstra();
+
+    public Arayüz() throws IOException {
         initComponents();
+        d.dosyaOkuma();
+        d.gidilecekSehirler.add(d.sehirler.get(40));
+        surecBilgi.setVisible(false);
+        surecBilgiUst.setVisible(false);
     }
 
     /**
@@ -110,11 +118,24 @@ public class Arayüz extends javax.swing.JFrame {
         jCheckBox79 = new javax.swing.JCheckBox();
         jCheckBox80 = new javax.swing.JCheckBox();
         jCheckBox81 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        baslat = new javax.swing.JLabel();
+        baslaYazisi = new javax.swing.JLabel();
+        sehirSayisi = new javax.swing.JLabel();
+        surecBilgi = new javax.swing.JLabel();
+        surecBilgiUst = new javax.swing.JLabel();
         arkaplanSag = new javax.swing.JLabel();
         arkaplanSol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1530, 570));
+        setPreferredSize(new java.awt.Dimension(1530, 630));
 
         jPanel1.setLayout(null);
 
@@ -133,60 +154,110 @@ public class Arayüz extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox1.setText("01 - ADANA");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox1);
         jCheckBox1.setBounds(20, 140, 160, 25);
 
         jCheckBox2.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox2.setText("02 - ADIYAMAN");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox2);
         jCheckBox2.setBounds(20, 170, 160, 25);
 
         jCheckBox3.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox3.setText("03 - AFYONKARAHİSAR");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox3);
         jCheckBox3.setBounds(20, 200, 171, 25);
 
         jCheckBox4.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox4.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox4.setText("04 - AĞRI");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox4);
         jCheckBox4.setBounds(20, 240, 160, 25);
 
         jCheckBox5.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox5.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox5.setText("05 - AMASYA");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox5);
         jCheckBox5.setBounds(20, 270, 160, 25);
 
         jCheckBox6.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox6.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox6.setText("06 - ANKARA");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox6);
         jCheckBox6.setBounds(20, 300, 160, 25);
 
         jCheckBox7.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox7.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox7.setText("07 - ANTALYA");
+        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox7);
         jCheckBox7.setBounds(20, 340, 160, 25);
 
         jCheckBox8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox8.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox8.setText("08 - ARTVİN");
+        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox8ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox8);
         jCheckBox8.setBounds(20, 370, 160, 25);
 
         jCheckBox9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox9.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox9.setText("09 - AYDIN");
+        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox9ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox9);
         jCheckBox9.setBounds(20, 400, 160, 25);
 
         jCheckBox10.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox10.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox10.setText("10 - BALIKESİR");
+        jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox10ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox10);
         jCheckBox10.setBounds(210, 140, 130, 25);
 
@@ -204,427 +275,838 @@ public class Arayüz extends javax.swing.JFrame {
         jCheckBox12.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox12.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox12.setText("12 - BİNGÖL");
+        jCheckBox12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox12ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox12);
         jCheckBox12.setBounds(210, 200, 130, 25);
 
         jCheckBox13.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox13.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox13.setText("13 - BİTLİS");
+        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox13ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox13);
         jCheckBox13.setBounds(210, 240, 130, 25);
 
         jCheckBox14.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox14.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox14.setText("14 - BOLU");
+        jCheckBox14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox14ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox14);
         jCheckBox14.setBounds(210, 270, 130, 25);
 
         jCheckBox15.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox15.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox15.setText("15 - BURDUR");
+        jCheckBox15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox15ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox15);
         jCheckBox15.setBounds(210, 300, 130, 25);
 
         jCheckBox16.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox16.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox16.setText("16 - BURSA");
+        jCheckBox16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox16ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox16);
         jCheckBox16.setBounds(210, 340, 130, 25);
 
         jCheckBox17.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox17.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox17.setText("17 - ÇANAKKALE");
+        jCheckBox17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox17ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox17);
         jCheckBox17.setBounds(210, 370, 130, 25);
 
         jCheckBox18.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox18.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox18.setText("18 - ÇANKIRI");
+        jCheckBox18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox18ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox18);
         jCheckBox18.setBounds(210, 400, 130, 25);
 
         jCheckBox19.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox19.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox19.setText("19 - ÇORUM");
+        jCheckBox19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox19ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox19);
         jCheckBox19.setBounds(370, 140, 130, 25);
 
         jCheckBox20.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox20.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox20.setText("20 - DENİZLİ");
+        jCheckBox20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox20ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox20);
         jCheckBox20.setBounds(370, 170, 130, 25);
 
         jCheckBox21.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox21.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox21.setText("21 - DİYARBAKIR");
+        jCheckBox21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox21ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox21);
         jCheckBox21.setBounds(370, 200, 130, 25);
 
         jCheckBox22.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox22.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox22.setText("22 - EDİRNE");
+        jCheckBox22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox22ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox22);
         jCheckBox22.setBounds(370, 240, 130, 25);
 
         jCheckBox23.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox23.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox23.setText("23 - ELAZIĞ");
+        jCheckBox23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox23ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox23);
         jCheckBox23.setBounds(370, 270, 130, 25);
 
         jCheckBox24.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox24.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox24.setText("24 - ERZİNCAN");
+        jCheckBox24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox24ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox24);
         jCheckBox24.setBounds(370, 300, 130, 25);
 
         jCheckBox25.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox25.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox25.setText("25 - ERZURUM");
+        jCheckBox25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox25ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox25);
         jCheckBox25.setBounds(370, 340, 130, 25);
 
         jCheckBox26.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox26.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox26.setText("26 - ESKİŞEHİR");
+        jCheckBox26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox26ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox26);
         jCheckBox26.setBounds(370, 370, 130, 25);
 
         jCheckBox27.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox27.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox27.setText("27 - GAZİANTEP");
+        jCheckBox27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox27ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox27);
         jCheckBox27.setBounds(370, 400, 130, 25);
 
         jCheckBox28.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox28.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox28.setText("28 - GİRESUN");
+        jCheckBox28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox28ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox28);
         jCheckBox28.setBounds(530, 140, 130, 25);
 
         jCheckBox29.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox29.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox29.setText("29 - GÜMÜŞHANE");
+        jCheckBox29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox29ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox29);
         jCheckBox29.setBounds(530, 170, 130, 25);
 
         jCheckBox30.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox30.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox30.setText("30 - HAKKARİ");
+        jCheckBox30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox30ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox30);
         jCheckBox30.setBounds(530, 200, 130, 25);
 
         jCheckBox31.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox31.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox31.setText("31 - HATAY");
+        jCheckBox31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox31ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox31);
         jCheckBox31.setBounds(530, 240, 130, 25);
 
         jCheckBox32.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox32.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox32.setText("32 - ISPARTA");
+        jCheckBox32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox32ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox32);
         jCheckBox32.setBounds(530, 270, 130, 25);
 
         jCheckBox33.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox33.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox33.setText("33 - MERSİN");
+        jCheckBox33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox33ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox33);
         jCheckBox33.setBounds(530, 300, 130, 25);
 
         jCheckBox34.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox34.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox34.setText("34 - İSTANBUL");
+        jCheckBox34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox34ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox34);
         jCheckBox34.setBounds(530, 340, 130, 25);
 
         jCheckBox35.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox35.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox35.setText("35 - İZMİR");
+        jCheckBox35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox35ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox35);
         jCheckBox35.setBounds(530, 370, 130, 25);
 
         jCheckBox36.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox36.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox36.setText("36 - KARS");
+        jCheckBox36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox36ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox36);
         jCheckBox36.setBounds(530, 400, 130, 25);
 
         jCheckBox37.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox37.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox37.setText("37 - KASTAMONU");
+        jCheckBox37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox37ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox37);
         jCheckBox37.setBounds(690, 140, 140, 25);
 
         jCheckBox38.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox38.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox38.setText("38 - KAYSERİ");
+        jCheckBox38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox38ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox38);
         jCheckBox38.setBounds(690, 170, 140, 25);
 
         jCheckBox39.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox39.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox39.setText("39 - KIRKLARELİ");
+        jCheckBox39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox39ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox39);
         jCheckBox39.setBounds(690, 200, 140, 25);
 
         jCheckBox40.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox40.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox40.setText("40 - KIRŞEHİR");
+        jCheckBox40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox40ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox40);
         jCheckBox40.setBounds(690, 240, 140, 25);
 
         jCheckBox41.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox41.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox41.setText("41 - KOCAELİ");
+        jCheckBox41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox41ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox41);
         jCheckBox41.setBounds(690, 270, 140, 25);
 
         jCheckBox42.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox42.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox42.setText("42 - KONYA");
+        jCheckBox42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox42ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox42);
         jCheckBox42.setBounds(690, 300, 140, 25);
 
         jCheckBox43.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox43.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox43.setText("43 - KÜTAHYA");
+        jCheckBox43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox43ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox43);
         jCheckBox43.setBounds(690, 340, 140, 25);
 
         jCheckBox44.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox44.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox44.setText("44 - MALATYA");
+        jCheckBox44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox44ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox44);
         jCheckBox44.setBounds(690, 370, 140, 25);
 
         jCheckBox45.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox45.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox45.setText("45 - MANİSA");
+        jCheckBox45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox45ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox45);
         jCheckBox45.setBounds(690, 400, 140, 25);
 
         jCheckBox46.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox46.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox46.setText("46 - KAHRAMANMARAŞ");
+        jCheckBox46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox46ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox46);
         jCheckBox46.setBounds(860, 140, 170, 25);
 
         jCheckBox47.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox47.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox47.setText("47 - MARDİN");
+        jCheckBox47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox47ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox47);
         jCheckBox47.setBounds(860, 170, 170, 25);
 
         jCheckBox48.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox48.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox48.setText("48 - MUĞLA");
+        jCheckBox48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox48ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox48);
         jCheckBox48.setBounds(860, 200, 170, 25);
 
         jCheckBox49.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox49.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox49.setText("49 - MUŞ");
+        jCheckBox49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox49ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox49);
         jCheckBox49.setBounds(860, 240, 170, 25);
 
         jCheckBox50.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox50.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox50.setText("50 - NEVŞEHİR");
+        jCheckBox50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox50ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox50);
         jCheckBox50.setBounds(860, 270, 170, 25);
 
         jCheckBox51.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox51.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox51.setText("51 - NİĞDE");
+        jCheckBox51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox51ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox51);
         jCheckBox51.setBounds(860, 300, 170, 25);
 
         jCheckBox52.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox52.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox52.setText("52 - ORDU");
+        jCheckBox52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox52ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox52);
         jCheckBox52.setBounds(860, 340, 170, 25);
 
         jCheckBox53.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox53.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox53.setText("53 - RİZE");
+        jCheckBox53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox53ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox53);
         jCheckBox53.setBounds(860, 370, 170, 25);
 
         jCheckBox54.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox54.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox54.setText("54 - SAKARYA");
+        jCheckBox54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox54ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox54);
         jCheckBox54.setBounds(860, 400, 170, 25);
 
         jCheckBox55.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox55.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox55.setText("55 - SAMSUN");
+        jCheckBox55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox55ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox55);
         jCheckBox55.setBounds(1060, 140, 120, 25);
 
         jCheckBox56.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox56.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox56.setText("56 - SİİRT");
+        jCheckBox56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox56ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox56);
         jCheckBox56.setBounds(1060, 170, 120, 25);
 
         jCheckBox57.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox57.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox57.setText("57 - SİNOP");
+        jCheckBox57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox57ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox57);
         jCheckBox57.setBounds(1060, 200, 120, 25);
 
         jCheckBox58.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox58.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox58.setText("58 - SİVAS");
+        jCheckBox58.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox58ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox58);
         jCheckBox58.setBounds(1060, 240, 120, 25);
 
         jCheckBox59.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox59.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox59.setText("59 - TEKİRDAĞ");
+        jCheckBox59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox59ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox59);
         jCheckBox59.setBounds(1060, 270, 120, 25);
 
         jCheckBox60.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox60.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox60.setText("60 - TOKAT");
+        jCheckBox60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox60ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox60);
         jCheckBox60.setBounds(1060, 300, 120, 25);
 
         jCheckBox61.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox61.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox61.setText("61 - TRABZON");
+        jCheckBox61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox61ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox61);
         jCheckBox61.setBounds(1060, 340, 120, 25);
 
         jCheckBox62.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox62.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox62.setText("62 - TUNCELİ");
+        jCheckBox62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox62ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox62);
         jCheckBox62.setBounds(1060, 370, 120, 25);
 
         jCheckBox63.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox63.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox63.setText("63 - ŞANLIURFA");
+        jCheckBox63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox63ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox63);
         jCheckBox63.setBounds(1060, 400, 127, 25);
 
         jCheckBox64.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox64.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox64.setText("64 - UŞAK");
+        jCheckBox64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox64ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox64);
         jCheckBox64.setBounds(1210, 140, 130, 25);
 
         jCheckBox65.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox65.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox65.setText("65 - VAN");
+        jCheckBox65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox65ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox65);
         jCheckBox65.setBounds(1210, 170, 130, 25);
 
         jCheckBox66.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox66.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox66.setText("66 - YOZGAT");
+        jCheckBox66.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox66ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox66);
         jCheckBox66.setBounds(1210, 200, 130, 25);
 
         jCheckBox67.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox67.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox67.setText("67 - ZONGULDAK");
+        jCheckBox67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox67ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox67);
         jCheckBox67.setBounds(1210, 240, 130, 25);
 
         jCheckBox68.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox68.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox68.setText("68 - AKSARAY");
+        jCheckBox68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox68ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox68);
         jCheckBox68.setBounds(1210, 270, 130, 25);
 
         jCheckBox69.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox69.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox69.setText("69 - BAYBURT");
+        jCheckBox69.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox69ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox69);
         jCheckBox69.setBounds(1210, 300, 130, 25);
 
         jCheckBox70.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox70.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox70.setText("70 - KARAMAN");
+        jCheckBox70.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox70ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox70);
         jCheckBox70.setBounds(1210, 340, 130, 25);
 
         jCheckBox71.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox71.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox71.setText("71 - KIRIKKALE");
+        jCheckBox71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox71ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox71);
         jCheckBox71.setBounds(1210, 370, 130, 25);
 
         jCheckBox72.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox72.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox72.setText("72 - BATMAN");
+        jCheckBox72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox72ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox72);
         jCheckBox72.setBounds(1210, 400, 130, 25);
 
         jCheckBox73.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox73.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox73.setText("73 - ŞIRNAK");
+        jCheckBox73.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox73ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox73);
         jCheckBox73.setBounds(1370, 140, 120, 25);
 
         jCheckBox74.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox74.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox74.setText("74 - BARTIN");
+        jCheckBox74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox74ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox74);
         jCheckBox74.setBounds(1370, 170, 120, 25);
 
         jCheckBox75.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox75.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox75.setText("75 - ARDAHAN");
+        jCheckBox75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox75ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox75);
         jCheckBox75.setBounds(1370, 200, 120, 25);
 
         jCheckBox76.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox76.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox76.setText("76 - IĞDIR");
+        jCheckBox76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox76ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox76);
         jCheckBox76.setBounds(1370, 240, 120, 25);
 
         jCheckBox77.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox77.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox77.setText("77 - YALOVA");
+        jCheckBox77.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox77ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox77);
         jCheckBox77.setBounds(1370, 270, 120, 25);
 
         jCheckBox78.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox78.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox78.setText("78 - KARABÜK");
+        jCheckBox78.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox78ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox78);
         jCheckBox78.setBounds(1370, 300, 120, 25);
 
         jCheckBox79.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox79.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox79.setText("79 - KİLİS");
+        jCheckBox79.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox79ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox79);
         jCheckBox79.setBounds(1370, 340, 120, 25);
 
         jCheckBox80.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox80.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox80.setText("80 - OSMANİYE");
+        jCheckBox80.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox80ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox80);
         jCheckBox80.setBounds(1370, 370, 120, 25);
 
         jCheckBox81.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jCheckBox81.setForeground(new java.awt.Color(102, 71, 10));
         jCheckBox81.setText("81 - DÜZCE");
+        jCheckBox81.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox81ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox81);
         jCheckBox81.setBounds(1370, 400, 120, 25);
+
+        jLabel1.setText("Seçilen Şehir Sayisi: ");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(30, 440, 130, 16);
+
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(600, 460, 41, 16);
+
+        jLabel3.setText("jLabel2");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(600, 440, 41, 16);
+
+        jProgressBar1.setStringPainted(true);
+        jPanel1.add(jProgressBar1);
+        jProgressBar1.setBounds(240, 500, 150, 40);
+
+        jButton2.setText("jButton2");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(670, 440, 79, 25);
+
+        jLabel4.setText("jLabel2");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(600, 480, 41, 16);
+
+        jLabel5.setText("jLabel2");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(600, 500, 41, 16);
+
+        jLabel6.setText("jLabel6");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(600, 520, 41, 16);
+
+        baslat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arabakucuk.png"))); // NOI18N
+        baslat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                baslatMouseClicked(evt);
+            }
+        });
+        jPanel1.add(baslat);
+        baslat.setBounds(30, 480, 140, 90);
+
+        baslaYazisi.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        baslaYazisi.setText("BAŞLA");
+        jPanel1.add(baslaYazisi);
+        baslaYazisi.setBounds(80, 520, 50, 16);
+
+        sehirSayisi.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        sehirSayisi.setForeground(new java.awt.Color(255, 102, 102));
+        sehirSayisi.setText("0");
+        jPanel1.add(sehirSayisi);
+        sehirSayisi.setBounds(160, 440, 41, 16);
+
+        surecBilgi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        surecBilgi.setText("Rotalar Oluşturuluyor...");
+        jPanel1.add(surecBilgi);
+        surecBilgi.setBounds(240, 550, 150, 20);
+
+        surecBilgiUst.setText("Rotalar Oluşturuluyor...");
+        jPanel1.add(surecBilgiUst);
+        surecBilgiUst.setBounds(240, 480, 150, 16);
 
         arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         arkaplanSag.setText("jLabel3");
         jPanel1.add(arkaplanSag);
-        arkaplanSag.setBounds(760, 0, 750, 560);
+        arkaplanSag.setBounds(760, 0, 750, 620);
         arkaplanSag.getAccessibleContext().setAccessibleName("");
 
         arkaplanSol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -633,27 +1115,1256 @@ public class Arayüz extends javax.swing.JFrame {
         arkaplanSol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         arkaplanSol.setMaximumSize(new java.awt.Dimension(1280, 1396));
         jPanel1.add(arkaplanSol);
-        arkaplanSol.setBounds(-120, 0, 1000, 560);
+        arkaplanSol.setBounds(-120, 0, 1000, 620);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1513, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1530, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox1.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(0));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox1.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox1.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(0));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox2.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(1));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox2.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox2.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(1));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox3.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(2));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox3.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox3.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(2));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox4.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(3));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox4.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox4.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(3));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox5.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(4));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox5.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox5.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(4));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox6.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(5));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox6.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox6.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(5));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
+    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox7.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(6));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox7.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox7.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(6));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox7ActionPerformed
+
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox8.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(7));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox8.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox8.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(7));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
+
+    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox9.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(8));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox9.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox9.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(8));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox9ActionPerformed
+
+    private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox10.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(9));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox10.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox10.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(9));
+
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox10ActionPerformed
+
     private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
-        // TODO add your handling code here:
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox11.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(10));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox11.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox11.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(10));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
     }//GEN-LAST:event_jCheckBox11ActionPerformed
+
+    private void jCheckBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox12ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox12.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(11));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox12.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox12.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(11));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox12ActionPerformed
+
+    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox13.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(12));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox13.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox13.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(12));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox13ActionPerformed
+
+    private void jCheckBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox14ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox14.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(13));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox14.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox14.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(13));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox14ActionPerformed
+
+    private void jCheckBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox15ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox15.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(14));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox15.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox15.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(14));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox15ActionPerformed
+
+    private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox16.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(15));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox16.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox16.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(15));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox16ActionPerformed
+
+    private void jCheckBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox17ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox17.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(16));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox17.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox17.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(16));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox17ActionPerformed
+
+    private void jCheckBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox18ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox18.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(17));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox18.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox18.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(17));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox18ActionPerformed
+
+    private void jCheckBox19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox19ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox19.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(18));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox19.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox19.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(18));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox19ActionPerformed
+
+    private void jCheckBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox20ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox20.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(19));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox20.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox20.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(19));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox20ActionPerformed
+
+    private void jCheckBox21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox21ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox21.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(20));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox21.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox21.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(20));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox21ActionPerformed
+
+    private void jCheckBox22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox22ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox22.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(21));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox22.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox22.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(21));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox22ActionPerformed
+
+    private void jCheckBox23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox23ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox23.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(22));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox23.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox23.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(22));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox23ActionPerformed
+
+    private void jCheckBox24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox24ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox24.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(23));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox24.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox24.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(23));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox24ActionPerformed
+
+    private void jCheckBox25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox25ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox25.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(24));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox25.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox25.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(24));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox25ActionPerformed
+
+    private void jCheckBox26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox26ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox26.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(25));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox26.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox26.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(25));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox26ActionPerformed
+
+    private void jCheckBox27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox27ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox27.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(26));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox27.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox27.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(26));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox27ActionPerformed
+
+    private void jCheckBox28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox28ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox28.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(27));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox28.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox28.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(27));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox28ActionPerformed
+
+    private void jCheckBox29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox29ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox29.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(28));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox29.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox29.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(28));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox29ActionPerformed
+
+    private void jCheckBox30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox30ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox30.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(29));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox30.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox30.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(29));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox30ActionPerformed
+
+    private void jCheckBox31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox31ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox31.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(30));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox31.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox31.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(30));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox31ActionPerformed
+
+    private void jCheckBox32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox32ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox32.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(31));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox32.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox32.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(31));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox32ActionPerformed
+
+    private void jCheckBox33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox33ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox33.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(32));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox33.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox33.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(32));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox33ActionPerformed
+
+    private void jCheckBox34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox34ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox34.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(33));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox34.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox34.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(33));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox34ActionPerformed
+
+    private void jCheckBox35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox35ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox35.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(34));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox35.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox35.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(34));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox35ActionPerformed
+
+    private void jCheckBox36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox36ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox36.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(35));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox36.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox36.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(35));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox36ActionPerformed
+
+    private void jCheckBox37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox37ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox37.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(36));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox37.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox37.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(36));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox37ActionPerformed
+
+    private void jCheckBox38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox38ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox38.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(37));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox38.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox38.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(37));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox38ActionPerformed
+
+    private void jCheckBox39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox39ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox39.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(38));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox39.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox39.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(38));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox39ActionPerformed
+
+    private void jCheckBox40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox40ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox40.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(39));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox40.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox40.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(39));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox40ActionPerformed
+
+    private void jCheckBox41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox41ActionPerformed
+        JOptionPane.showMessageDialog(null, "Başlangıç Şehrini Ekleyemezsiniz !");
+        jCheckBox41.setSelected(false);
+    }//GEN-LAST:event_jCheckBox41ActionPerformed
+
+    private void jCheckBox42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox42ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox42.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(41));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox42.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox42.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(41));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox42ActionPerformed
+
+    private void jCheckBox43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox43ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox43.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(42));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox43.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox43.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(42));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox43ActionPerformed
+
+    private void jCheckBox44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox44ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox44.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(43));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox44.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox44.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(43));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox44ActionPerformed
+
+    private void jCheckBox45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox45ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox45.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(44));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox45.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox45.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(44));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox45ActionPerformed
+
+    private void jCheckBox46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox46ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox46.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(45));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox46.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox46.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(45));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox46ActionPerformed
+
+    private void jCheckBox47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox47ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox47.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(46));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox47.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox47.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(46));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox47ActionPerformed
+
+    private void jCheckBox48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox48ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox48.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(47));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox48.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox48.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(47));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox48ActionPerformed
+
+    private void jCheckBox49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox49ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox49.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(48));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox49.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox49.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(48));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox49ActionPerformed
+
+    private void jCheckBox50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox50ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox50.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(49));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox50.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox50.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(49));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox50ActionPerformed
+
+    private void jCheckBox51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox51ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox51.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(50));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox51.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox51.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(50));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox51ActionPerformed
+
+    private void jCheckBox52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox52ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox52.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(51));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox52.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox52.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(51));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox52ActionPerformed
+
+    private void jCheckBox53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox53ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox53.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(52));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox53.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox53.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(52));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox53ActionPerformed
+
+    private void jCheckBox54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox54ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox54.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(53));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox54.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox54.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(53));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox54ActionPerformed
+
+    private void jCheckBox55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox55ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox55.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(54));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox55.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox55.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(54));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox55ActionPerformed
+
+    private void jCheckBox56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox56ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox56.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(55));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox56.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox56.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(55));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox56ActionPerformed
+
+    private void jCheckBox57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox57ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox57.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(56));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox57.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox57.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(56));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox57ActionPerformed
+
+    private void jCheckBox58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox58ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox58.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(57));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox58.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox58.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(57));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox58ActionPerformed
+
+    private void jCheckBox59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox59ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox59.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(58));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox59.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox59.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(58));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox59ActionPerformed
+
+    private void jCheckBox60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox60ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox60.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(59));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox60.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox60.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(59));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox60ActionPerformed
+
+    private void jCheckBox61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox61ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox61.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(60));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox61.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox61.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(60));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox61ActionPerformed
+
+    private void jCheckBox62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox62ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox62.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(61));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox62.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox62.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(61));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox62ActionPerformed
+
+    private void jCheckBox63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox63ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox63.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(62));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox63.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox63.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(62));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox63ActionPerformed
+
+    private void jCheckBox64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox64ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox64.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(63));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox64.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox64.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(63));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox64ActionPerformed
+
+    private void jCheckBox65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox65ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox65.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(64));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox65.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox65.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(64));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox65ActionPerformed
+
+    private void jCheckBox66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox66ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox66.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(65));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox66.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox66.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(65));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox66ActionPerformed
+
+    private void jCheckBox67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox67ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox67.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(66));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox67.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox67.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(66));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox67ActionPerformed
+
+    private void jCheckBox68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox68ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox68.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(67));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox68.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox68.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(67));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox68ActionPerformed
+
+    private void jCheckBox69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox69ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox69.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(68));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox69.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox69.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(68));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox69ActionPerformed
+
+    private void jCheckBox70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox70ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox70.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(69));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox70.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox70.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(69));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox70ActionPerformed
+
+    private void jCheckBox71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox71ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox71.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(70));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox71.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox71.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(70));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox71ActionPerformed
+
+    private void jCheckBox72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox72ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox72.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(71));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox72.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox72.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(71));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox72ActionPerformed
+
+    private void jCheckBox73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox73ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox73.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(72));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox73.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox73.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(72));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox73ActionPerformed
+
+    private void jCheckBox74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox74ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox74.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(73));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox74.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox74.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(73));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox74ActionPerformed
+
+    private void jCheckBox75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox75ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox75.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(74));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox75.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox75.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(74));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox75ActionPerformed
+
+    private void jCheckBox76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox76ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox76.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(75));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox76.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox76.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(75));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox76ActionPerformed
+
+    private void jCheckBox77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox77ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox77.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(76));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox77.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox77.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(76));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox77ActionPerformed
+
+    private void jCheckBox78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox78ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox78.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(77));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox78.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox78.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(77));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox78ActionPerformed
+
+    private void jCheckBox79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox79ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox79.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(78));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox79.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox79.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(78));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox79ActionPerformed
+
+    private void jCheckBox80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox80ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox80.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(79));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox80.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox80.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(79));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox80ActionPerformed
+
+    private void jCheckBox81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox81ActionPerformed
+        if (d.gidilecekSehirler.size() < 11 && jCheckBox81.isSelected()) {
+            d.gidilecekSehirler.add(d.sehirler.get(80));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+            return;
+        } else if (d.gidilecekSehirler.size() > 10 && jCheckBox81.isSelected()) {
+            JOptionPane.showMessageDialog(null, "10 Adetten Fazla Şehir Ekleyemezsiniz !");
+            jCheckBox81.setSelected(false);
+            return;
+        } else {
+            d.gidilecekSehirler.remove(d.sehirler.get(80));
+            sehirSayisi.setText(String.valueOf(d.gidilecekSehirler.size() - 1));
+        }
+    }//GEN-LAST:event_jCheckBox81ActionPerformed
+
+    private void baslatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_baslatMouseClicked
+        
+        if (d.gidilecekSehirler.size() > 3) {
+            surecBilgiUst.setVisible(true);
+            surecBilgiUst.setText("Rotalar Oluşturuluyor : ");
+            d.rotaOlusturma();
+            surecBilgiUst.setVisible(false);
+             surecBilgi.setVisible(true); 
+            surecBilgi.setText("Rotalar Oluşturuldu : ");
+        } else {                      
+             JOptionPane.showMessageDialog(null, "En Az 3 Adet Şehir Ekleyiniz !");
+        }
+
+
+    }//GEN-LAST:event_baslatMouseClicked
 
     /**
      * @param args the command line arguments
@@ -685,7 +2396,11 @@ public class Arayüz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Arayüz().setVisible(true);
+                try {
+                    new Arayüz().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -693,7 +2408,10 @@ public class Arayüz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arkaplanSag;
     private javax.swing.JLabel arkaplanSol;
+    private javax.swing.JLabel baslaYazisi;
+    private javax.swing.JLabel baslat;
     private javax.swing.JLabel baslik;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -775,7 +2493,17 @@ public class Arayüz extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox80;
     private javax.swing.JCheckBox jCheckBox81;
     private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel mesaj;
+    private javax.swing.JLabel sehirSayisi;
+    private javax.swing.JLabel surecBilgi;
+    private javax.swing.JLabel surecBilgiUst;
     // End of variables declaration//GEN-END:variables
 }
