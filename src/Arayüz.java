@@ -1,18 +1,14 @@
 
-import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import sun.net.www.content.image.gif;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,17 +20,20 @@ import sun.net.www.content.image.gif;
  * @author Lenovo
  */
 public class Arayüz extends javax.swing.JFrame {
-
-    public static Dijkstra d = new Dijkstra();
-    public int say = 0;
-
+    public static Toolkit kit = Toolkit.getDefaultToolkit();
+    public static Dijkstra d = new Dijkstra();  //Dijkstra sınıfının fonksiyonlarına ve değişkenlerine erişebilmek için yeni bir nesne oluşturuldu.
+    public int say = 0; // Progress Barı kontrol etmek için tutulan sayaç.
+    public static int EkranX;
+    public static int EkranY;
     public Arayüz() throws IOException {
         initComponents();
-        d.dosyaOkuma();
+        d.dosyaOkuma(); // Şehirlerin mesafelerini plakalarına göre okuma yapar. 
         d.gidilecekSehirler.add(d.sehirler.get(40));
         surecBilgi.setVisible(false);
-        new HaritaCizdirme();
-
+         EkranX = (int) kit.getScreenSize().width; //Ekran boyutunun genişliğini alıyoruz...
+        EkranY = (int) kit.getScreenSize().height;//Ekran boyutunun yüksekliğini alıyoruz...
+        this.setLocation((EkranX - 1511) / 2, (EkranY - 650) / 2);  // Görünüm olarak açılan pencerenin ekranın tam ortasında çıkması için        
+        
     }
 
     /**
@@ -151,7 +150,10 @@ public class Arayüz extends javax.swing.JFrame {
         arkaplanSol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1530, 650));
+        setTitle("M&T KARGO UYGULAMASI");
+        setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(1511, 650));
+        setResizable(false);
 
         jPanel1.setLayout(null);
 
@@ -1166,7 +1168,7 @@ public class Arayüz extends javax.swing.JFrame {
         surecBilgi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         surecBilgi.setText("Rotalar Oluşturuluyor...");
         jPanel1.add(surecBilgi);
-        surecBilgi.setBounds(240, 550, 150, 20);
+        surecBilgi.setBounds(240, 550, 190, 20);
 
         arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         arkaplanSag.setText("jLabel3");
@@ -1187,7 +1189,7 @@ public class Arayüz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1530, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1510, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -1200,6 +1202,8 @@ public class Arayüz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Kullanıcının arayüzde hangi şehirleri seçtiğini kontrol etmek için ve seçilen şehirleri gidilecek şehirlere eklemek için kullanılan kod bloğu.
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (d.gidilecekSehirler.size() < 11 && jCheckBox1.isSelected()) {
             d.gidilecekSehirler.add(d.sehirler.get(0));
@@ -2415,65 +2419,64 @@ public class Arayüz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox81ActionPerformed
 
+    
+    //Rotalar oluşturulur ve bu süreç arayüzde Gösterilir. Oluşturulan rotalar en az maliyet olacak şekilde arayüzün sağ alt kısmında listelenir.
     private void baslatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_baslatMouseClicked
-        
-
+        jProgressBar1.setValue(0);
+        surecBilgi.setText("Rota Oluşturuluyor...");
         rota1.setText("Rota 1:");
-       rota2.setText("Rota 2:");
-       rota3.setText("Rota 3:");
-       rota4.setText("Rota 4:");
-       rota5.setText("Rota 5:");/*
-        for (int i = 0; i < d.gidilecekSehirler.size(); i++) {
-            System.out.println(d.gidilecekSehirler.get(i).dugumIsmi);
-            System.out.println("");
-        }*/
-        if (d.gidilecekSehirler.size() > 3) {
+        rota2.setText("Rota 2:");
+        rota3.setText("Rota 3:");
+        rota4.setText("Rota 4:");
+        rota5.setText("Rota 5:");
 
+        if (d.gidilecekSehirler.size() > 3) {
+            int baslangicmin = LocalTime.now().getMinute();
+            int baslangicsec = LocalTime.now().getSecond();
             try {
                 d.rotaOlusturma();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            Timer timer = new Timer(50, null);
 
-        timer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
+            Timer timer = new Timer(20, null);
 
-                say++;
-                jProgressBar1.setValue(say);
+            say = 0;
+            timer.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
 
-                if (jProgressBar1.getValue() == 100) {
-                    System.out.println("Rota Oluşturuldu");
+                    say++;
+                    jProgressBar1.setValue(say);
 
-                    timer.stop();
+                    if (jProgressBar1.getValue() == 100) {
+                        surecBilgi.setVisible(true);
+                        surecBilgi.setText("Rotalar Oluşturuldu : ");
+                        rota1.setText("Rota 1 : " + String.valueOf((int) d.alternatifRotalar.get(0).get(0).minMesafe) + " km.");
+                        if (d.alternatifRotalar.size() > 1) {
+                            rota2.setText("Rota 2 : " + String.valueOf((int) d.alternatifRotalar.get(1).get(0).minMesafe) + " km.");
+                        }
+                        if (d.alternatifRotalar.size() > 2) {
+                            rota3.setText("Rota 3 : " + String.valueOf((int) d.alternatifRotalar.get(2).get(0).minMesafe) + " km.");
+                        }
+                        if (d.alternatifRotalar.size() > 3) {
+                            rota4.setText("Rota 4 : " + String.valueOf((int) d.alternatifRotalar.get(3).get(0).minMesafe) + " km.");
+                        }
+                        if (d.alternatifRotalar.size() > 4) {
+                            rota5.setText("Rota 5 : " + String.valueOf((int) d.alternatifRotalar.get(4).get(0).minMesafe) + " km.");
+                        }
+                        timer.stop();
+                        int bitismin = LocalTime.now().getMinute();
+                        int bitissec = LocalTime.now().getSecond();
 
+                        surecBilgi.setText("Rotalar Oluşturuldu : " + ((bitismin * 60 + bitissec) - (baslangicmin * 60 + baslangicsec)) + "sn");
+
+                    }
                 }
-            }
-        });
-        timer.start();
-            System.out.println("");
-            for (int i = 0; d.alternatifRotalar.get(0).size() > i; i++) {
-                System.out.println(d.alternatifRotalar.get(0).get(i).dugumIsmi);
-            }
-            System.out.println("");
-            surecBilgi.setVisible(true);
-            surecBilgi.setText("Rotalar Oluşturuldu : ");
-            rota1.setText("Rota 1 : " + String.valueOf((int) d.alternatifRotalar.get(0).get(0).minMesafe) + " km.");
-            if (d.alternatifRotalar.size() > 1) {
-                rota2.setText("Rota 2 : " + String.valueOf((int) d.alternatifRotalar.get(1).get(0).minMesafe) + " km.");
-            }
-            if (d.alternatifRotalar.size() > 2) {
-                rota3.setText("Rota 3 : " + String.valueOf((int) d.alternatifRotalar.get(2).get(0).minMesafe) + " km.");
-            }
-            if (d.alternatifRotalar.size() > 3) {
-                rota4.setText("Rota 4 : " + String.valueOf((int) d.alternatifRotalar.get(3).get(0).minMesafe) + " km.");
-            }
-            if (d.alternatifRotalar.size() > 4) {
-                rota5.setText("Rota 5 : " + String.valueOf((int) d.alternatifRotalar.get(4).get(0).minMesafe) + " km.");
-            }
-           // jProgressBar1.setValue(100);
+            });
+            timer.start();
+
+            // jProgressBar1.setValue(100);
         } else {
             JOptionPane.showMessageDialog(null, "En Az 3 Adet Şehir Ekleyiniz !");
         }
@@ -2481,6 +2484,7 @@ public class Arayüz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_baslatMouseClicked
 
+    //Seçilen rotanın harita üzerinde çizdirilmesini sağlar.
     private void rota1CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota1CizActionPerformed
         try {
             new HaritaCizdirme(d.alternatifRotalar.get(0));
@@ -2492,42 +2496,66 @@ public class Arayüz extends javax.swing.JFrame {
     }//GEN-LAST:event_rota1CizActionPerformed
 
     private void rota2CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota2CizActionPerformed
-        try {
-            new HaritaCizdirme(d.alternatifRotalar.get(1));
-        } catch (HeadlessException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (d.alternatifRotalar.size() > 1) {
+            try {
+                new HaritaCizdirme(d.alternatifRotalar.get(1));
+            } catch (HeadlessException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota2CizActionPerformed
 
     private void rota3CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota3CizActionPerformed
-        try {
-            new HaritaCizdirme(d.alternatifRotalar.get(2));
-        } catch (HeadlessException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        if (d.alternatifRotalar.size() > 2) {
+            try {
+                new HaritaCizdirme(d.alternatifRotalar.get(2));
+            } catch (HeadlessException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota3CizActionPerformed
 
     private void rota4CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota4CizActionPerformed
-        try {
-            new HaritaCizdirme(d.alternatifRotalar.get(3));
-        } catch (HeadlessException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (d.alternatifRotalar.size() > 3) {
+            try {
+                new HaritaCizdirme(d.alternatifRotalar.get(3));
+            } catch (HeadlessException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota4CizActionPerformed
 
     private void rota5CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota5CizActionPerformed
-        try {
-            new HaritaCizdirme(d.alternatifRotalar.get(4));
-        } catch (HeadlessException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (d.alternatifRotalar.size() > 4) {
+            try {
+                new HaritaCizdirme(d.alternatifRotalar.get(4));
+            } catch (HeadlessException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota5CizActionPerformed
 

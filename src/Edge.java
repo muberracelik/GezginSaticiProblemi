@@ -8,7 +8,7 @@
  *
  * @author Lenovo
  */
-public class Edge { // edge => kenar
+public class Edge { // edge => kenar  komsuların bilgilerini tutar.
 
     public final Vertex hedefVertex;
     public final double mesafe;

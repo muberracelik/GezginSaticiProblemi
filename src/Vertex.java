@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Lenovo
  */
-public class Vertex { // vertex => düğüm
+public class Vertex { // vertex => düğüm  sehirlerin bilgilerini tutar.
 
     public String dugumIsmi;
     public int plaka;
