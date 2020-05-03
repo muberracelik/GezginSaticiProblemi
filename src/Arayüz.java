@@ -20,20 +20,22 @@ import javax.swing.Timer;
  * @author Lenovo
  */
 public class Arayüz extends javax.swing.JFrame {
+
     public static Toolkit kit = Toolkit.getDefaultToolkit();
     public static Dijkstra d = new Dijkstra();  //Dijkstra sınıfının fonksiyonlarına ve değişkenlerine erişebilmek için yeni bir nesne oluşturuldu.
     public int say = 0; // Progress Barı kontrol etmek için tutulan sayaç.
     public static int EkranX;
     public static int EkranY;
+
     public Arayüz() throws IOException {
         initComponents();
         d.dosyaOkuma(); // Şehirlerin mesafelerini plakalarına göre okuma yapar. 
         d.gidilecekSehirler.add(d.sehirler.get(40));
         surecBilgi.setVisible(false);
-         EkranX = (int) kit.getScreenSize().width; //Ekran boyutunun genişliğini alıyoruz...
+        EkranX = (int) kit.getScreenSize().width; //Ekran boyutunun genişliğini alıyoruz...
         EkranY = (int) kit.getScreenSize().height;//Ekran boyutunun yüksekliğini alıyoruz...
         this.setLocation((EkranX - 1511) / 2, (EkranY - 650) / 2);  // Görünüm olarak açılan pencerenin ekranın tam ortasında çıkması için        
-        
+
     }
 
     /**
@@ -1077,7 +1079,7 @@ public class Arayüz extends javax.swing.JFrame {
 
         jProgressBar1.setStringPainted(true);
         jPanel1.add(jProgressBar1);
-        jProgressBar1.setBounds(240, 500, 150, 40);
+        jProgressBar1.setBounds(240, 490, 150, 40);
 
         rota1Ciz.setText("Çizdir");
         rota1Ciz.addActionListener(new java.awt.event.ActionListener() {
@@ -1168,7 +1170,7 @@ public class Arayüz extends javax.swing.JFrame {
         surecBilgi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         surecBilgi.setText("Rotalar Oluşturuluyor...");
         jPanel1.add(surecBilgi);
-        surecBilgi.setBounds(240, 550, 190, 20);
+        surecBilgi.setBounds(240, 540, 190, 20);
 
         arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         arkaplanSag.setText("jLabel3");
@@ -1202,7 +1204,6 @@ public class Arayüz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     //Kullanıcının arayüzde hangi şehirleri seçtiğini kontrol etmek için ve seçilen şehirleri gidilecek şehirlere eklemek için kullanılan kod bloğu.
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (d.gidilecekSehirler.size() < 11 && jCheckBox1.isSelected()) {
@@ -2419,28 +2420,34 @@ public class Arayüz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox81ActionPerformed
 
-    
     //Rotalar oluşturulur ve bu süreç arayüzde Gösterilir. Oluşturulan rotalar en az maliyet olacak şekilde arayüzün sağ alt kısmında listelenir.
     private void baslatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_baslatMouseClicked
-        jProgressBar1.setValue(0);
-        surecBilgi.setText("Rota Oluşturuluyor...");
-        rota1.setText("Rota 1:");
-        rota2.setText("Rota 2:");
-        rota3.setText("Rota 3:");
-        rota4.setText("Rota 4:");
-        rota5.setText("Rota 5:");
-
         if (d.gidilecekSehirler.size() > 3) {
+            if (d.gidilecekSehirler.size() == 11) {
+               JOptionPane.showMessageDialog(null, "Bu İşlem Bilgisayarınızın Durumuna Göre Uzun Süreceğinden\n                    Lütfen Bekleyiniz!  (Max: 35 ± 10 sn)\n\nİşleme Devam Etmek İçin \"OK\" 'a basınız" );
+            }
+            System.out.println("Rotalar Hesaplanmaya Başlandı");//konsolda kullanıcıya bilgi vermek için.   
+            jProgressBar1.setValue(0);
+            surecBilgi.setText("Rota Oluşturuluyor...");
+            surecBilgi.setVisible(true);
+            rota1.setText("Rota 1:");
+            rota2.setText("Rota 2:");
+            rota3.setText("Rota 3:");
+            rota4.setText("Rota 4:");
+            rota5.setText("Rota 5:");           
             int baslangicmin = LocalTime.now().getMinute();
             int baslangicsec = LocalTime.now().getSecond();
             try {
                 d.rotaOlusturma();
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            Timer timer = new Timer(20, null);
-
+            int bitismin = LocalTime.now().getMinute();
+            int bitissec = LocalTime.now().getSecond();
+            
+            
+            Timer timer = new Timer(10, null);
             say = 0;
             timer.addActionListener(new ActionListener() {
                 @Override
@@ -2466,11 +2473,12 @@ public class Arayüz extends javax.swing.JFrame {
                             rota5.setText("Rota 5 : " + String.valueOf((int) d.alternatifRotalar.get(4).get(0).minMesafe) + " km.");
                         }
                         timer.stop();
-                        int bitismin = LocalTime.now().getMinute();
-                        int bitissec = LocalTime.now().getSecond();
+                        
 
                         surecBilgi.setText("Rotalar Oluşturuldu : " + ((bitismin * 60 + bitissec) - (baslangicmin * 60 + baslangicsec)) + "sn");
 
+                    } else {
+                        surecBilgi.setText("Rota Oluşturuluyor...");
                     }
                 }
             });
@@ -2480,7 +2488,6 @@ public class Arayüz extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "En Az 3 Adet Şehir Ekleyiniz !");
         }
-
 
     }//GEN-LAST:event_baslatMouseClicked
 
@@ -2505,9 +2512,7 @@ public class Arayüz extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota2CizActionPerformed
@@ -2521,8 +2526,7 @@ public class Arayüz extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota3CizActionPerformed
@@ -2537,8 +2541,7 @@ public class Arayüz extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota4CizActionPerformed
@@ -2553,8 +2556,7 @@ public class Arayüz extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Rota Mevcut Değil !");
         }
     }//GEN-LAST:event_rota5CizActionPerformed

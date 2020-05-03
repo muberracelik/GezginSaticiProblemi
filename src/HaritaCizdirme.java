@@ -13,7 +13,7 @@ public class HaritaCizdirme extends JFrame{
     
     public HaritaCizdirme(ArrayList<Vertex> a) throws HeadlessException, IOException {
         
-        Ekran ekran =new Ekran(a);    
+        Ekran ekran =new Ekran(a);            
         this.setVisible(true);
         this.setResizable(true);
         this.setSize(1193,570);
