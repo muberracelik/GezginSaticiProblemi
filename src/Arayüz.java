@@ -1,8 +1,18 @@
 
+import java.awt.Color;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import sun.net.www.content.image.gif;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,14 +25,16 @@ import javax.swing.JOptionPane;
  */
 public class Arayüz extends javax.swing.JFrame {
 
-    Dijkstra d = new Dijkstra();
+    public static Dijkstra d = new Dijkstra();
+    public int say = 0;
 
     public Arayüz() throws IOException {
         initComponents();
         d.dosyaOkuma();
         d.gidilecekSehirler.add(d.sehirler.get(40));
         surecBilgi.setVisible(false);
-        surecBilgiUst.setVisible(false);
+        new HaritaCizdirme();
+
     }
 
     /**
@@ -119,23 +131,27 @@ public class Arayüz extends javax.swing.JFrame {
         jCheckBox80 = new javax.swing.JCheckBox();
         jCheckBox81 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        rota2 = new javax.swing.JLabel();
+        rota1 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        rota1Ciz = new javax.swing.JButton();
+        rota2Ciz = new javax.swing.JButton();
+        rota3Ciz = new javax.swing.JButton();
+        rota4Ciz = new javax.swing.JButton();
+        rota5Ciz = new javax.swing.JButton();
+        rota3 = new javax.swing.JLabel();
+        rota4 = new javax.swing.JLabel();
+        rota5 = new javax.swing.JLabel();
+        gelistiriciler = new javax.swing.JLabel();
         baslat = new javax.swing.JLabel();
         baslaYazisi = new javax.swing.JLabel();
         sehirSayisi = new javax.swing.JLabel();
         surecBilgi = new javax.swing.JLabel();
-        surecBilgiUst = new javax.swing.JLabel();
         arkaplanSag = new javax.swing.JLabel();
         arkaplanSol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1530, 630));
+        setPreferredSize(new java.awt.Dimension(1530, 650));
 
         jPanel1.setLayout(null);
 
@@ -1046,33 +1062,86 @@ public class Arayüz extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 440, 130, 16);
 
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(600, 460, 41, 16);
+        rota2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rota2.setText("Rota 2 :");
+        jPanel1.add(rota2);
+        rota2.setBounds(810, 483, 120, 16);
 
-        jLabel3.setText("jLabel2");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(600, 440, 41, 16);
+        rota1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rota1.setText("Rota 1 : ");
+        rota1.setPreferredSize(new java.awt.Dimension(65, 25));
+        jPanel1.add(rota1);
+        rota1.setBounds(810, 450, 120, 20);
 
         jProgressBar1.setStringPainted(true);
         jPanel1.add(jProgressBar1);
         jProgressBar1.setBounds(240, 500, 150, 40);
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(670, 440, 79, 25);
+        rota1Ciz.setText("Çizdir");
+        rota1Ciz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rota1CizActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rota1Ciz);
+        rota1Ciz.setBounds(940, 450, 65, 25);
 
-        jLabel4.setText("jLabel2");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(600, 480, 41, 16);
+        rota2Ciz.setText("Çizdir");
+        rota2Ciz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rota2CizActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rota2Ciz);
+        rota2Ciz.setBounds(940, 480, 65, 25);
 
-        jLabel5.setText("jLabel2");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(600, 500, 41, 16);
+        rota3Ciz.setText("Çizdir");
+        rota3Ciz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rota3CizActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rota3Ciz);
+        rota3Ciz.setBounds(940, 510, 65, 25);
 
-        jLabel6.setText("jLabel6");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(600, 520, 41, 16);
+        rota4Ciz.setText("Çizdir");
+        rota4Ciz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rota4CizActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rota4Ciz);
+        rota4Ciz.setBounds(940, 540, 65, 25);
+
+        rota5Ciz.setText("Çizdir");
+        rota5Ciz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rota5CizActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rota5Ciz);
+        rota5Ciz.setBounds(940, 570, 65, 25);
+
+        rota3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rota3.setText("Rota 3 :");
+        jPanel1.add(rota3);
+        rota3.setBounds(810, 513, 120, 16);
+
+        rota4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rota4.setText("Rota 4 :");
+        jPanel1.add(rota4);
+        rota4.setBounds(810, 543, 120, 16);
+
+        rota5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rota5.setText("Rota 5 :");
+        jPanel1.add(rota5);
+        rota5.setBounds(810, 573, 120, 16);
+
+        gelistiriciler.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        gelistiriciler.setForeground(new java.awt.Color(0, 51, 51));
+        gelistiriciler.setText("Müberra ÇELİK & Taha Batuhan TÜRK");
+        jPanel1.add(gelistiriciler);
+        gelistiriciler.setBounds(1250, 550, 250, 60);
 
         baslat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arabakucuk.png"))); // NOI18N
         baslat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1098,10 +1167,6 @@ public class Arayüz extends javax.swing.JFrame {
         surecBilgi.setText("Rotalar Oluşturuluyor...");
         jPanel1.add(surecBilgi);
         surecBilgi.setBounds(240, 550, 150, 20);
-
-        surecBilgiUst.setText("Rotalar Oluşturuluyor...");
-        jPanel1.add(surecBilgiUst);
-        surecBilgiUst.setBounds(240, 480, 150, 16);
 
         arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         arkaplanSag.setText("jLabel3");
@@ -2352,19 +2417,119 @@ public class Arayüz extends javax.swing.JFrame {
 
     private void baslatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_baslatMouseClicked
         
+
+        rota1.setText("Rota 1:");
+       rota2.setText("Rota 2:");
+       rota3.setText("Rota 3:");
+       rota4.setText("Rota 4:");
+       rota5.setText("Rota 5:");/*
+        for (int i = 0; i < d.gidilecekSehirler.size(); i++) {
+            System.out.println(d.gidilecekSehirler.get(i).dugumIsmi);
+            System.out.println("");
+        }*/
         if (d.gidilecekSehirler.size() > 3) {
-            surecBilgiUst.setVisible(true);
-            surecBilgiUst.setText("Rotalar Oluşturuluyor : ");
-            d.rotaOlusturma();
-            surecBilgiUst.setVisible(false);
-             surecBilgi.setVisible(true); 
+
+            try {
+                d.rotaOlusturma();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            Timer timer = new Timer(50, null);
+
+        timer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                say++;
+                jProgressBar1.setValue(say);
+
+                if (jProgressBar1.getValue() == 100) {
+                    System.out.println("Rota Oluşturuldu");
+
+                    timer.stop();
+
+                }
+            }
+        });
+        timer.start();
+            System.out.println("");
+            for (int i = 0; d.alternatifRotalar.get(0).size() > i; i++) {
+                System.out.println(d.alternatifRotalar.get(0).get(i).dugumIsmi);
+            }
+            System.out.println("");
+            surecBilgi.setVisible(true);
             surecBilgi.setText("Rotalar Oluşturuldu : ");
-        } else {                      
-             JOptionPane.showMessageDialog(null, "En Az 3 Adet Şehir Ekleyiniz !");
+            rota1.setText("Rota 1 : " + String.valueOf((int) d.alternatifRotalar.get(0).get(0).minMesafe) + " km.");
+            if (d.alternatifRotalar.size() > 1) {
+                rota2.setText("Rota 2 : " + String.valueOf((int) d.alternatifRotalar.get(1).get(0).minMesafe) + " km.");
+            }
+            if (d.alternatifRotalar.size() > 2) {
+                rota3.setText("Rota 3 : " + String.valueOf((int) d.alternatifRotalar.get(2).get(0).minMesafe) + " km.");
+            }
+            if (d.alternatifRotalar.size() > 3) {
+                rota4.setText("Rota 4 : " + String.valueOf((int) d.alternatifRotalar.get(3).get(0).minMesafe) + " km.");
+            }
+            if (d.alternatifRotalar.size() > 4) {
+                rota5.setText("Rota 5 : " + String.valueOf((int) d.alternatifRotalar.get(4).get(0).minMesafe) + " km.");
+            }
+           // jProgressBar1.setValue(100);
+        } else {
+            JOptionPane.showMessageDialog(null, "En Az 3 Adet Şehir Ekleyiniz !");
         }
 
 
     }//GEN-LAST:event_baslatMouseClicked
+
+    private void rota1CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota1CizActionPerformed
+        try {
+            new HaritaCizdirme(d.alternatifRotalar.get(0));
+        } catch (HeadlessException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rota1CizActionPerformed
+
+    private void rota2CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota2CizActionPerformed
+        try {
+            new HaritaCizdirme(d.alternatifRotalar.get(1));
+        } catch (HeadlessException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rota2CizActionPerformed
+
+    private void rota3CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota3CizActionPerformed
+        try {
+            new HaritaCizdirme(d.alternatifRotalar.get(2));
+        } catch (HeadlessException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rota3CizActionPerformed
+
+    private void rota4CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota4CizActionPerformed
+        try {
+            new HaritaCizdirme(d.alternatifRotalar.get(3));
+        } catch (HeadlessException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rota4CizActionPerformed
+
+    private void rota5CizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rota5CizActionPerformed
+        try {
+            new HaritaCizdirme(d.alternatifRotalar.get(4));
+        } catch (HeadlessException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Arayüz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rota5CizActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2408,10 +2573,10 @@ public class Arayüz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arkaplanSag;
     private javax.swing.JLabel arkaplanSol;
-    private javax.swing.JLabel baslaYazisi;
+    public static javax.swing.JLabel baslaYazisi;
     private javax.swing.JLabel baslat;
     private javax.swing.JLabel baslik;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel gelistiriciler;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -2494,16 +2659,20 @@ public class Arayüz extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox81;
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
+    public static javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel mesaj;
+    private javax.swing.JLabel rota1;
+    private javax.swing.JButton rota1Ciz;
+    private javax.swing.JLabel rota2;
+    private javax.swing.JButton rota2Ciz;
+    private javax.swing.JLabel rota3;
+    private javax.swing.JButton rota3Ciz;
+    private javax.swing.JLabel rota4;
+    private javax.swing.JButton rota4Ciz;
+    private javax.swing.JLabel rota5;
+    private javax.swing.JButton rota5Ciz;
     private javax.swing.JLabel sehirSayisi;
     private javax.swing.JLabel surecBilgi;
-    private javax.swing.JLabel surecBilgiUst;
     // End of variables declaration//GEN-END:variables
 }
