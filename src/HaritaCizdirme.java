@@ -21,11 +21,4 @@ public class HaritaCizdirme extends JFrame{
         this.setLocation((Arayüz.EkranX - 1193) / 2, (Arayüz.EkranY - 570) / 2);   
         
     }
-    
-   
-
-    
-
-   
-    
 }

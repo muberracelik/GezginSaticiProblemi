@@ -3,7 +3,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -47,7 +46,7 @@ public class Ekran extends JPanel {
         koordinatOkuma();
         rota = kullanıcınınSectigiRota;  // Kullanıcının arayüzde seçtiği, çizdirilmek istenen rota.
         for (int i = 1; i < rota.size() - 1; i++) {
-            rotaText += rota.get(i).dugumIsmi + "→";
+            rotaText += rota.get(i).dugumIsmi + "->";
         }
         rotaText += rota.get(rota.size() - 1).dugumIsmi;
         String rotaText1;
@@ -58,7 +57,6 @@ public class Ekran extends JPanel {
         JButton rotayiGoster = new JButton("Rotayı Göster");
         rotayiGoster.setBounds(1193, 531, 1193, 531);
         rotayiGoster.setLocation(1100, 510);
-        JPanel sulo = this;
         rotayiGoster.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

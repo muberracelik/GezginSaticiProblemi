@@ -55,7 +55,7 @@ public class Dijkstra {
             }
             aktifSehir = sehirler.get(aktifSehirIndex);
         }
-    }
+    }//sehirDijkstra
 
     public void guzergahEkle(Vertex sehir, int index) { //gidilecek şehirler listesindeki tüm şehirler için bu tekrarlanır. şehir değişkeni sıradaki şehri tutar, index ise o şehrin,
         //gidilecek şehirler listesindeki indexini tutar. Ör: Kocaeli 0,Bursa 1,Eskişehir 2 ....
@@ -63,20 +63,18 @@ public class Dijkstra {
         for (int i = 0; i < sehirler.size(); i++) {
             ArrayList<Vertex> cumle2 = new ArrayList<>();
             Vertex guzergah = sehirler.get(i); // guzergah bir şehirden kocaeliye gidene kadar uğranılan şehirleri tutuyor.
-
             cumle2.add(new Vertex(guzergah.minMesafe));
             while (guzergah != sehirler.get(sehir.plaka - 1)) {
 
                 cumle2.add(guzergah);
                 guzergah = guzergah.parent;
             }
-
             cumle2.add(sehir);
             minSehirler2.add(new ArrayList<ArrayList<Vertex>>());//alt satırda çekebilmek için önce bellekten yer ayırmamız gerekiyor.
             minSehirler2.get(index).add(cumle2);
         }
 
-    }
+    }//guzergahEkle
 
     public int fak(int sayi) {//faktoriyel fonksiyonu
         int fakt = 1;
@@ -117,7 +115,7 @@ public class Dijkstra {
             sehirCursor++;
         }
         komsularDosyasi.close(); // dosyadan çekip graphı tamamladık
-    }
+    }//dosyaOkuma
 
     public void rotaOlusturma() throws InterruptedException {   //Alternatif rotaları hesaplama fonksiyonu.
 

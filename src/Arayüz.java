@@ -10,15 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Lenovo
- */
+
 public class Arayüz extends javax.swing.JFrame {
 
     public static Toolkit kit = Toolkit.getDefaultToolkit();
@@ -47,7 +39,7 @@ public class Arayüz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         baslik = new javax.swing.JLabel();
         mesaj = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -131,10 +123,10 @@ public class Arayüz extends javax.swing.JFrame {
         jCheckBox79 = new javax.swing.JCheckBox();
         jCheckBox80 = new javax.swing.JCheckBox();
         jCheckBox81 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
+        sehirSayisiBilgiText = new javax.swing.JLabel();
         rota2 = new javax.swing.JLabel();
         rota1 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        surecBari = new javax.swing.JProgressBar();
         rota1Ciz = new javax.swing.JButton();
         rota2Ciz = new javax.swing.JButton();
         rota3Ciz = new javax.swing.JButton();
@@ -154,21 +146,20 @@ public class Arayüz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("M&T KARGO UYGULAMASI");
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(1511, 650));
         setResizable(false);
 
-        jPanel1.setLayout(null);
+        panel.setLayout(null);
 
         baslik.setFont(new java.awt.Font("Ink Free", 1, 43)); // NOI18N
         baslik.setForeground(new java.awt.Color(255, 255, 255));
         baslik.setText("M&T KARGO");
-        jPanel1.add(baslik);
+        panel.add(baslik);
         baslik.setBounds(620, 20, 270, 60);
         baslik.getAccessibleContext().setAccessibleName("M&T Kargo Dağıtım Planlama");
 
         mesaj.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         mesaj.setText("Lütfen teslimat şehirlerini seçiniz !");
-        jPanel1.add(mesaj);
+        panel.add(mesaj);
         mesaj.setBounds(20, 80, 230, 30);
 
         jCheckBox1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -179,7 +170,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1);
+        panel.add(jCheckBox1);
         jCheckBox1.setBounds(20, 140, 160, 25);
 
         jCheckBox2.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -190,7 +181,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox2);
+        panel.add(jCheckBox2);
         jCheckBox2.setBounds(20, 170, 160, 25);
 
         jCheckBox3.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -201,7 +192,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox3);
+        panel.add(jCheckBox3);
         jCheckBox3.setBounds(20, 200, 171, 25);
 
         jCheckBox4.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -212,7 +203,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox4);
+        panel.add(jCheckBox4);
         jCheckBox4.setBounds(20, 240, 160, 25);
 
         jCheckBox5.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -223,7 +214,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox5);
+        panel.add(jCheckBox5);
         jCheckBox5.setBounds(20, 270, 160, 25);
 
         jCheckBox6.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -234,7 +225,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox6);
+        panel.add(jCheckBox6);
         jCheckBox6.setBounds(20, 300, 160, 25);
 
         jCheckBox7.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -245,7 +236,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox7);
+        panel.add(jCheckBox7);
         jCheckBox7.setBounds(20, 340, 160, 25);
 
         jCheckBox8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -256,7 +247,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox8);
+        panel.add(jCheckBox8);
         jCheckBox8.setBounds(20, 370, 160, 25);
 
         jCheckBox9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -267,7 +258,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox9);
+        panel.add(jCheckBox9);
         jCheckBox9.setBounds(20, 400, 160, 25);
 
         jCheckBox10.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -278,7 +269,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox10);
+        panel.add(jCheckBox10);
         jCheckBox10.setBounds(210, 140, 130, 25);
 
         jCheckBox11.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -289,7 +280,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox11ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox11);
+        panel.add(jCheckBox11);
         jCheckBox11.setBounds(210, 170, 130, 25);
 
         jCheckBox12.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -300,7 +291,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox12ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox12);
+        panel.add(jCheckBox12);
         jCheckBox12.setBounds(210, 200, 130, 25);
 
         jCheckBox13.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -311,7 +302,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox13ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox13);
+        panel.add(jCheckBox13);
         jCheckBox13.setBounds(210, 240, 130, 25);
 
         jCheckBox14.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -322,7 +313,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox14ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox14);
+        panel.add(jCheckBox14);
         jCheckBox14.setBounds(210, 270, 130, 25);
 
         jCheckBox15.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -333,7 +324,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox15ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox15);
+        panel.add(jCheckBox15);
         jCheckBox15.setBounds(210, 300, 130, 25);
 
         jCheckBox16.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -344,7 +335,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox16ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox16);
+        panel.add(jCheckBox16);
         jCheckBox16.setBounds(210, 340, 130, 25);
 
         jCheckBox17.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -355,7 +346,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox17ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox17);
+        panel.add(jCheckBox17);
         jCheckBox17.setBounds(210, 370, 130, 25);
 
         jCheckBox18.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -366,7 +357,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox18ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox18);
+        panel.add(jCheckBox18);
         jCheckBox18.setBounds(210, 400, 130, 25);
 
         jCheckBox19.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -377,7 +368,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox19ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox19);
+        panel.add(jCheckBox19);
         jCheckBox19.setBounds(370, 140, 130, 25);
 
         jCheckBox20.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -388,7 +379,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox20ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox20);
+        panel.add(jCheckBox20);
         jCheckBox20.setBounds(370, 170, 130, 25);
 
         jCheckBox21.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -399,7 +390,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox21ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox21);
+        panel.add(jCheckBox21);
         jCheckBox21.setBounds(370, 200, 130, 25);
 
         jCheckBox22.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -410,7 +401,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox22ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox22);
+        panel.add(jCheckBox22);
         jCheckBox22.setBounds(370, 240, 130, 25);
 
         jCheckBox23.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -421,7 +412,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox23ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox23);
+        panel.add(jCheckBox23);
         jCheckBox23.setBounds(370, 270, 130, 25);
 
         jCheckBox24.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -432,7 +423,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox24ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox24);
+        panel.add(jCheckBox24);
         jCheckBox24.setBounds(370, 300, 130, 25);
 
         jCheckBox25.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -443,7 +434,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox25ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox25);
+        panel.add(jCheckBox25);
         jCheckBox25.setBounds(370, 340, 130, 25);
 
         jCheckBox26.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -454,7 +445,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox26ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox26);
+        panel.add(jCheckBox26);
         jCheckBox26.setBounds(370, 370, 130, 25);
 
         jCheckBox27.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -465,7 +456,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox27ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox27);
+        panel.add(jCheckBox27);
         jCheckBox27.setBounds(370, 400, 130, 25);
 
         jCheckBox28.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -476,7 +467,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox28ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox28);
+        panel.add(jCheckBox28);
         jCheckBox28.setBounds(530, 140, 130, 25);
 
         jCheckBox29.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -487,7 +478,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox29ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox29);
+        panel.add(jCheckBox29);
         jCheckBox29.setBounds(530, 170, 130, 25);
 
         jCheckBox30.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -498,7 +489,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox30ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox30);
+        panel.add(jCheckBox30);
         jCheckBox30.setBounds(530, 200, 130, 25);
 
         jCheckBox31.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -509,7 +500,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox31ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox31);
+        panel.add(jCheckBox31);
         jCheckBox31.setBounds(530, 240, 130, 25);
 
         jCheckBox32.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -520,7 +511,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox32ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox32);
+        panel.add(jCheckBox32);
         jCheckBox32.setBounds(530, 270, 130, 25);
 
         jCheckBox33.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -531,7 +522,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox33ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox33);
+        panel.add(jCheckBox33);
         jCheckBox33.setBounds(530, 300, 130, 25);
 
         jCheckBox34.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -542,7 +533,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox34ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox34);
+        panel.add(jCheckBox34);
         jCheckBox34.setBounds(530, 340, 130, 25);
 
         jCheckBox35.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -553,7 +544,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox35ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox35);
+        panel.add(jCheckBox35);
         jCheckBox35.setBounds(530, 370, 130, 25);
 
         jCheckBox36.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -564,7 +555,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox36ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox36);
+        panel.add(jCheckBox36);
         jCheckBox36.setBounds(530, 400, 130, 25);
 
         jCheckBox37.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -575,7 +566,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox37ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox37);
+        panel.add(jCheckBox37);
         jCheckBox37.setBounds(690, 140, 140, 25);
 
         jCheckBox38.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -586,7 +577,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox38ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox38);
+        panel.add(jCheckBox38);
         jCheckBox38.setBounds(690, 170, 140, 25);
 
         jCheckBox39.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -597,7 +588,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox39ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox39);
+        panel.add(jCheckBox39);
         jCheckBox39.setBounds(690, 200, 140, 25);
 
         jCheckBox40.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -608,7 +599,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox40ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox40);
+        panel.add(jCheckBox40);
         jCheckBox40.setBounds(690, 240, 140, 25);
 
         jCheckBox41.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -619,7 +610,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox41ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox41);
+        panel.add(jCheckBox41);
         jCheckBox41.setBounds(690, 270, 140, 25);
 
         jCheckBox42.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -630,7 +621,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox42ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox42);
+        panel.add(jCheckBox42);
         jCheckBox42.setBounds(690, 300, 140, 25);
 
         jCheckBox43.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -641,7 +632,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox43ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox43);
+        panel.add(jCheckBox43);
         jCheckBox43.setBounds(690, 340, 140, 25);
 
         jCheckBox44.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -652,7 +643,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox44ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox44);
+        panel.add(jCheckBox44);
         jCheckBox44.setBounds(690, 370, 140, 25);
 
         jCheckBox45.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -663,7 +654,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox45ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox45);
+        panel.add(jCheckBox45);
         jCheckBox45.setBounds(690, 400, 140, 25);
 
         jCheckBox46.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -674,7 +665,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox46ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox46);
+        panel.add(jCheckBox46);
         jCheckBox46.setBounds(860, 140, 170, 25);
 
         jCheckBox47.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -685,7 +676,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox47ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox47);
+        panel.add(jCheckBox47);
         jCheckBox47.setBounds(860, 170, 170, 25);
 
         jCheckBox48.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -696,7 +687,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox48ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox48);
+        panel.add(jCheckBox48);
         jCheckBox48.setBounds(860, 200, 170, 25);
 
         jCheckBox49.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -707,7 +698,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox49ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox49);
+        panel.add(jCheckBox49);
         jCheckBox49.setBounds(860, 240, 170, 25);
 
         jCheckBox50.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -718,7 +709,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox50ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox50);
+        panel.add(jCheckBox50);
         jCheckBox50.setBounds(860, 270, 170, 25);
 
         jCheckBox51.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -729,7 +720,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox51ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox51);
+        panel.add(jCheckBox51);
         jCheckBox51.setBounds(860, 300, 170, 25);
 
         jCheckBox52.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -740,7 +731,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox52ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox52);
+        panel.add(jCheckBox52);
         jCheckBox52.setBounds(860, 340, 170, 25);
 
         jCheckBox53.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -751,7 +742,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox53ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox53);
+        panel.add(jCheckBox53);
         jCheckBox53.setBounds(860, 370, 170, 25);
 
         jCheckBox54.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -762,7 +753,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox54ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox54);
+        panel.add(jCheckBox54);
         jCheckBox54.setBounds(860, 400, 170, 25);
 
         jCheckBox55.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -773,7 +764,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox55ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox55);
+        panel.add(jCheckBox55);
         jCheckBox55.setBounds(1060, 140, 120, 25);
 
         jCheckBox56.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -784,7 +775,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox56ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox56);
+        panel.add(jCheckBox56);
         jCheckBox56.setBounds(1060, 170, 120, 25);
 
         jCheckBox57.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -795,7 +786,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox57ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox57);
+        panel.add(jCheckBox57);
         jCheckBox57.setBounds(1060, 200, 120, 25);
 
         jCheckBox58.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -806,7 +797,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox58ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox58);
+        panel.add(jCheckBox58);
         jCheckBox58.setBounds(1060, 240, 120, 25);
 
         jCheckBox59.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -817,7 +808,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox59ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox59);
+        panel.add(jCheckBox59);
         jCheckBox59.setBounds(1060, 270, 120, 25);
 
         jCheckBox60.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -828,7 +819,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox60ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox60);
+        panel.add(jCheckBox60);
         jCheckBox60.setBounds(1060, 300, 120, 25);
 
         jCheckBox61.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -839,7 +830,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox61ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox61);
+        panel.add(jCheckBox61);
         jCheckBox61.setBounds(1060, 340, 120, 25);
 
         jCheckBox62.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -850,7 +841,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox62ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox62);
+        panel.add(jCheckBox62);
         jCheckBox62.setBounds(1060, 370, 120, 25);
 
         jCheckBox63.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -861,7 +852,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox63ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox63);
+        panel.add(jCheckBox63);
         jCheckBox63.setBounds(1060, 400, 127, 25);
 
         jCheckBox64.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -872,7 +863,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox64ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox64);
+        panel.add(jCheckBox64);
         jCheckBox64.setBounds(1210, 140, 130, 25);
 
         jCheckBox65.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -883,7 +874,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox65ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox65);
+        panel.add(jCheckBox65);
         jCheckBox65.setBounds(1210, 170, 130, 25);
 
         jCheckBox66.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -894,7 +885,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox66ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox66);
+        panel.add(jCheckBox66);
         jCheckBox66.setBounds(1210, 200, 130, 25);
 
         jCheckBox67.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -905,7 +896,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox67ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox67);
+        panel.add(jCheckBox67);
         jCheckBox67.setBounds(1210, 240, 130, 25);
 
         jCheckBox68.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -916,7 +907,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox68ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox68);
+        panel.add(jCheckBox68);
         jCheckBox68.setBounds(1210, 270, 130, 25);
 
         jCheckBox69.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -927,7 +918,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox69ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox69);
+        panel.add(jCheckBox69);
         jCheckBox69.setBounds(1210, 300, 130, 25);
 
         jCheckBox70.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -938,7 +929,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox70ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox70);
+        panel.add(jCheckBox70);
         jCheckBox70.setBounds(1210, 340, 130, 25);
 
         jCheckBox71.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -949,7 +940,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox71ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox71);
+        panel.add(jCheckBox71);
         jCheckBox71.setBounds(1210, 370, 130, 25);
 
         jCheckBox72.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -960,7 +951,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox72ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox72);
+        panel.add(jCheckBox72);
         jCheckBox72.setBounds(1210, 400, 130, 25);
 
         jCheckBox73.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -971,7 +962,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox73ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox73);
+        panel.add(jCheckBox73);
         jCheckBox73.setBounds(1370, 140, 120, 25);
 
         jCheckBox74.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -982,7 +973,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox74ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox74);
+        panel.add(jCheckBox74);
         jCheckBox74.setBounds(1370, 170, 120, 25);
 
         jCheckBox75.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -993,7 +984,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox75ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox75);
+        panel.add(jCheckBox75);
         jCheckBox75.setBounds(1370, 200, 120, 25);
 
         jCheckBox76.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1004,7 +995,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox76ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox76);
+        panel.add(jCheckBox76);
         jCheckBox76.setBounds(1370, 240, 120, 25);
 
         jCheckBox77.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1015,7 +1006,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox77ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox77);
+        panel.add(jCheckBox77);
         jCheckBox77.setBounds(1370, 270, 120, 25);
 
         jCheckBox78.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1026,7 +1017,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox78ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox78);
+        panel.add(jCheckBox78);
         jCheckBox78.setBounds(1370, 300, 120, 25);
 
         jCheckBox79.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1037,7 +1028,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox79ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox79);
+        panel.add(jCheckBox79);
         jCheckBox79.setBounds(1370, 340, 120, 25);
 
         jCheckBox80.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1048,7 +1039,7 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox80ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox80);
+        panel.add(jCheckBox80);
         jCheckBox80.setBounds(1370, 370, 120, 25);
 
         jCheckBox81.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
@@ -1059,27 +1050,27 @@ public class Arayüz extends javax.swing.JFrame {
                 jCheckBox81ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox81);
+        panel.add(jCheckBox81);
         jCheckBox81.setBounds(1370, 400, 120, 25);
 
-        jLabel1.setText("Seçilen Şehir Sayisi: ");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 440, 130, 16);
+        sehirSayisiBilgiText.setText("Seçilen Şehir Sayisi: ");
+        panel.add(sehirSayisiBilgiText);
+        sehirSayisiBilgiText.setBounds(30, 440, 130, 16);
 
         rota2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         rota2.setText("Rota 2 :");
-        jPanel1.add(rota2);
+        panel.add(rota2);
         rota2.setBounds(810, 483, 120, 16);
 
         rota1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         rota1.setText("Rota 1 : ");
         rota1.setPreferredSize(new java.awt.Dimension(65, 25));
-        jPanel1.add(rota1);
+        panel.add(rota1);
         rota1.setBounds(810, 450, 120, 20);
 
-        jProgressBar1.setStringPainted(true);
-        jPanel1.add(jProgressBar1);
-        jProgressBar1.setBounds(240, 490, 150, 40);
+        surecBari.setStringPainted(true);
+        panel.add(surecBari);
+        surecBari.setBounds(240, 490, 150, 40);
 
         rota1Ciz.setText("Çizdir");
         rota1Ciz.addActionListener(new java.awt.event.ActionListener() {
@@ -1087,7 +1078,7 @@ public class Arayüz extends javax.swing.JFrame {
                 rota1CizActionPerformed(evt);
             }
         });
-        jPanel1.add(rota1Ciz);
+        panel.add(rota1Ciz);
         rota1Ciz.setBounds(940, 450, 65, 25);
 
         rota2Ciz.setText("Çizdir");
@@ -1096,7 +1087,7 @@ public class Arayüz extends javax.swing.JFrame {
                 rota2CizActionPerformed(evt);
             }
         });
-        jPanel1.add(rota2Ciz);
+        panel.add(rota2Ciz);
         rota2Ciz.setBounds(940, 480, 65, 25);
 
         rota3Ciz.setText("Çizdir");
@@ -1105,7 +1096,7 @@ public class Arayüz extends javax.swing.JFrame {
                 rota3CizActionPerformed(evt);
             }
         });
-        jPanel1.add(rota3Ciz);
+        panel.add(rota3Ciz);
         rota3Ciz.setBounds(940, 510, 65, 25);
 
         rota4Ciz.setText("Çizdir");
@@ -1114,7 +1105,7 @@ public class Arayüz extends javax.swing.JFrame {
                 rota4CizActionPerformed(evt);
             }
         });
-        jPanel1.add(rota4Ciz);
+        panel.add(rota4Ciz);
         rota4Ciz.setBounds(940, 540, 65, 25);
 
         rota5Ciz.setText("Çizdir");
@@ -1123,28 +1114,28 @@ public class Arayüz extends javax.swing.JFrame {
                 rota5CizActionPerformed(evt);
             }
         });
-        jPanel1.add(rota5Ciz);
+        panel.add(rota5Ciz);
         rota5Ciz.setBounds(940, 570, 65, 25);
 
         rota3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         rota3.setText("Rota 3 :");
-        jPanel1.add(rota3);
+        panel.add(rota3);
         rota3.setBounds(810, 513, 120, 16);
 
         rota4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         rota4.setText("Rota 4 :");
-        jPanel1.add(rota4);
+        panel.add(rota4);
         rota4.setBounds(810, 543, 120, 16);
 
         rota5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         rota5.setText("Rota 5 :");
-        jPanel1.add(rota5);
+        panel.add(rota5);
         rota5.setBounds(810, 573, 120, 16);
 
         gelistiriciler.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         gelistiriciler.setForeground(new java.awt.Color(0, 51, 51));
         gelistiriciler.setText("Müberra ÇELİK & Taha Batuhan TÜRK");
-        jPanel1.add(gelistiriciler);
+        panel.add(gelistiriciler);
         gelistiriciler.setBounds(1250, 550, 250, 60);
 
         baslat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arabakucuk.png"))); // NOI18N
@@ -1153,28 +1144,28 @@ public class Arayüz extends javax.swing.JFrame {
                 baslatMouseClicked(evt);
             }
         });
-        jPanel1.add(baslat);
+        panel.add(baslat);
         baslat.setBounds(30, 480, 140, 90);
 
         baslaYazisi.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         baslaYazisi.setText("BAŞLA");
-        jPanel1.add(baslaYazisi);
+        panel.add(baslaYazisi);
         baslaYazisi.setBounds(80, 520, 50, 16);
 
         sehirSayisi.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         sehirSayisi.setForeground(new java.awt.Color(255, 102, 102));
         sehirSayisi.setText("0");
-        jPanel1.add(sehirSayisi);
+        panel.add(sehirSayisi);
         sehirSayisi.setBounds(160, 440, 41, 16);
 
         surecBilgi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         surecBilgi.setText("Rotalar Oluşturuluyor...");
-        jPanel1.add(surecBilgi);
+        panel.add(surecBilgi);
         surecBilgi.setBounds(240, 540, 190, 20);
 
         arkaplanSag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         arkaplanSag.setText("jLabel3");
-        jPanel1.add(arkaplanSag);
+        panel.add(arkaplanSag);
         arkaplanSag.setBounds(760, 0, 750, 620);
         arkaplanSag.getAccessibleContext().setAccessibleName("");
 
@@ -1183,7 +1174,7 @@ public class Arayüz extends javax.swing.JFrame {
         arkaplanSol.setToolTipText("");
         arkaplanSol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         arkaplanSol.setMaximumSize(new java.awt.Dimension(1280, 1396));
-        jPanel1.add(arkaplanSol);
+        panel.add(arkaplanSol);
         arkaplanSol.setBounds(-120, 0, 1000, 620);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1191,13 +1182,13 @@ public class Arayüz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1510, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1510, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -2427,7 +2418,7 @@ public class Arayüz extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "Bu İşlem Bilgisayarınızın Durumuna Göre Uzun Süreceğinden\n                    Lütfen Bekleyiniz!  (Max: 35 ± 10 sn)\n\nİşleme Devam Etmek İçin \"OK\" 'a basınız" );
             }
             System.out.println("Rotalar Hesaplanmaya Başlandı");//konsolda kullanıcıya bilgi vermek için.   
-            jProgressBar1.setValue(0);
+            surecBari.setValue(0);
             surecBilgi.setText("Rota Oluşturuluyor...");
             surecBilgi.setVisible(true);
             rota1.setText("Rota 1:");
@@ -2454,9 +2445,9 @@ public class Arayüz extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent ae) {
 
                     say++;
-                    jProgressBar1.setValue(say);
+                    surecBari.setValue(say);
 
-                    if (jProgressBar1.getValue() == 100) {
+                    if (surecBari.getValue() == 100) {
                         surecBilgi.setVisible(true);
                         surecBilgi.setText("Rotalar Oluşturuldu : ");
                         rota1.setText("Rota 1 : " + String.valueOf((int) d.alternatifRotalar.get(0).get(0).minMesafe) + " km.");
@@ -2688,10 +2679,8 @@ public class Arayüz extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox80;
     private javax.swing.JCheckBox jCheckBox81;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    public static javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel mesaj;
+    private javax.swing.JPanel panel;
     private javax.swing.JLabel rota1;
     private javax.swing.JButton rota1Ciz;
     private javax.swing.JLabel rota2;
@@ -2703,6 +2692,8 @@ public class Arayüz extends javax.swing.JFrame {
     private javax.swing.JLabel rota5;
     private javax.swing.JButton rota5Ciz;
     private javax.swing.JLabel sehirSayisi;
+    private javax.swing.JLabel sehirSayisiBilgiText;
+    public static javax.swing.JProgressBar surecBari;
     private javax.swing.JLabel surecBilgi;
     // End of variables declaration//GEN-END:variables
 }
